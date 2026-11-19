@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Julianna Janusz</title>
+<meta name="description" content="Julianna Janusz - content marketing, SEO i branding. Portfolio: SEO i teksty dla różnych marek, strategia treści, partnerstwa, social media.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23EBA9B5'/%3E%3Ctext x='32' y='42' font-family='Arial Black,Arial' font-size='26' text-anchor='middle' fill='%232E3324'%3Ejj%3C/text%3E%3C/svg%3E">
+<!--HELMET-START-->
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Allura&amp;family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  /* layout: one-page portfolio - full-bleed photo hero as in Canva, then cream / olive bands with soft floating orbs and frosted glass cards; every skill gets a big lowercase heading, a pink handwritten note and real work */
+  --olive:#5C6444;
+  --olive-deep:#3E4530;
+  --cream:#FCF2C4;
+  --ink:#2E3324;
+  --rose:#EBA9B5;
+  --rose-ink:#B8627A;
+  --wine:#9C4A62;
+  --muted:#5A5F48;
+  --pink-band:#F2D3D9;
+  --font-display:'Archivo Black','Arial Black',Arial,sans-serif;
+  --font-script:'Allura','Brush Script MT',cursive;
+  --font-body:'Lora',Georgia,'Times New Roman',serif;
+  color-scheme:light;
+}
+body{margin:0}
+html{scroll-behavior:smooth}
+.site{background:var(--cream);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.site *,.site *::before,.site *::after{box-sizing:border-box}
+.site img{max-width:100%;height:auto;display:block}
+.site a{color:inherit}
+.site :focus-visible{outline:3px solid var(--rose-ink);outline-offset:3px;border-radius:6px}
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding-inline:clamp(16px,5vw,64px)}
+.band{position:relative;padding-block:clamp(72px,10vw,128px);overflow:hidden}
+.band.cream{background:var(--cream);color:var(--ink)}
+.band.olive{background:var(--olive);color:var(--cream)}
+.band.deep{background:var(--olive-deep);color:var(--cream)}
+.band.pink{background:var(--pink-band);color:var(--ink)}
+.h2{margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(60px,10vw,128px);line-height:.85;letter-spacing:-.05em;text-wrap:balance}
+.script{display:block;font-family:var(--font-script);font-size:.46em;line-height:1;letter-spacing:0;margin:-.28em 0 0 1.2em;color:var(--rose-ink)}
+.olive .script,.deep .script{color:var(--rose)}
+.pink .script{color:var(--wine)}
+.lead{margin:0;max-width:62ch;font-size:clamp(17px,1.5vw,19px);line-height:1.7}
+.lead + .lead{margin-top:14px}
+.label{margin:0 0 14px;font-family:var(--font-display);font-size:13px;letter-spacing:.06em}
+
+/* kule w tle i szkło */
+.orb{position:absolute;z-index:0;border-radius:50%;filter:blur(64px);pointer-events:none;animation:drift 18s ease-in-out infinite alternate}
+.orb.a{width:440px;height:440px;background:rgba(235,169,181,.55);top:-80px;right:-120px}
+.orb.b{width:380px;height:380px;background:rgba(167,174,134,.55);bottom:-120px;left:-100px;animation-duration:22s}
+.orb.c{width:300px;height:300px;background:rgba(235,169,181,.35);top:40%;left:40%;animation-duration:26s}
+.olive .orb.a{background:rgba(235,169,181,.35)}
+.olive .orb.b{background:rgba(252,242,196,.22)}
+.glass{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.5),rgba(255,255,255,0) 42%),rgba(255,255,255,.42);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);border:1px solid rgba(255,255,255,.72);box-shadow:0 12px 34px rgba(46,51,36,.12),inset 0 1px 0 rgba(255,255,255,.85)}
+.olive .glass,.deep .glass{background:linear-gradient(135deg,rgba(252,242,196,.18),rgba(252,242,196,0) 42%),rgba(252,242,196,.1);border-color:rgba(252,242,196,.3);box-shadow:0 12px 34px rgba(0,0,0,.2),inset 0 1px 0 rgba(252,242,196,.3)}
+
+/* hero jak w Canvie */
+.hero{position:relative;height:clamp(620px,92vh,960px);overflow:hidden;background:var(--olive-deep);color:var(--cream);isolation:isolate}
+.hero-img{position:absolute;inset:0;width:100%;height:100% !important;object-fit:cover;object-position:42% 30%;z-index:-2;animation:kenburns 16s ease-out both}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(30,34,22,.42) 0%,rgba(30,34,22,0) 20%),linear-gradient(to top,rgba(30,34,22,.6) 0%,rgba(30,34,22,.2) 34%,rgba(30,34,22,0) 52%)}
+.hero-nav{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:clamp(16px,3vw,34px) clamp(20px,6vw,96px)}
+.hero-nav a{display:inline-flex;align-items:center;min-height:44px;font-family:var(--font-display);font-size:clamp(15px,1.4vw,20px);letter-spacing:.03em;text-decoration:none;color:var(--cream);text-shadow:0 1px 12px rgba(0,0,0,.35);transition:color .25s,transform .25s}
+.hero-nav a:hover{color:var(--rose);transform:translateY(-2px)}
+.hero-inner{position:absolute;left:0;right:0;top:47.5%;display:flex;justify-content:center;padding-inline:16px}
+.name-wrap{display:inline-flex;flex-direction:column}
+.hero-name{margin:0;font-family:var(--font-display);font-weight:400;line-height:.82;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+.hero-name .first{display:block;font-size:clamp(76px,15vw,228px);letter-spacing:-.055em;white-space:nowrap;color:var(--cream)}
+.ch{display:inline-block;animation:chIn .9s cubic-bezier(.2,.8,.2,1) both}
+.hero-under{display:flex;justify-content:flex-end;align-items:baseline;flex-wrap:wrap;gap:4px clamp(18px,5vw,72px);margin-top:.15em}
+.hero-sub{margin:0;font-size:clamp(16px,2vw,30px);line-height:1.2;color:var(--cream);text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.hero-last{font-family:var(--font-display);font-size:clamp(28px,4.2vw,64px);line-height:1;letter-spacing:-.03em;color:var(--rose);text-shadow:0 2px 20px rgba(0,0,0,.25);animation:chIn .9s cubic-bezier(.2,.8,.2,1) .95s both}
+.hero-links{position:absolute;left:0;right:0;bottom:clamp(84px,11vh,104px);display:flex;flex-wrap:wrap;justify-content:center;gap:4px 30px;padding-inline:16px}
+.hero-links a{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:clamp(16px,1.6vw,21px);text-decoration:none;color:var(--cream);text-shadow:0 1px 12px rgba(0,0,0,.4);transition:color .25s}
+.hero-links a:hover{color:var(--rose)}
+
+/* pływające menu */
+.dock-nav{position:fixed;left:50%;bottom:16px;z-index:60;display:flex;gap:2px;padding:6px;border-radius:999px;transform:translateX(-50%);background:rgba(252,242,196,.58);-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);border:1px solid rgba(255,255,255,.65);box-shadow:0 10px 30px rgba(30,34,22,.25),inset 0 1px 0 rgba(255,255,255,.8);white-space:nowrap}
+.dock-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;font-family:var(--font-display);font-size:13px;letter-spacing:.03em;color:var(--ink);text-decoration:none;transition:background .25s}
+.dock-nav a:hover{background:rgba(255,255,255,.7)}
+
+/* o mnie */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,96px);align-items:center}
+.photo-card{position:relative;max-width:400px;width:100%;justify-self:center;margin-top:40px}
+.photo-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 42%;border-radius:10px;box-shadow:0 24px 50px rgba(46,51,36,.2)}
+.hello{position:absolute;right:-34px;top:-70px;z-index:2;transform:rotate(-8deg)}
+.shine{margin:0;font-family:var(--font-script);font-size:clamp(70px,8vw,104px);line-height:1;padding:0 .1em .1em;background:linear-gradient(110deg,#B8627A 0%,#B8627A 38%,#FFF7F9 50%,#B8627A 62%,#B8627A 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 3.4s linear infinite;filter:drop-shadow(0 3px 8px rgba(184,98,122,.35))}
+.spark{position:absolute;width:22px;height:22px;animation:twinkle 2.2s ease-in-out infinite}
+.spark.s1{left:-14px;top:6px}
+.spark.s2{right:-6px;top:-10px;width:16px;height:16px;animation-delay:.7s}
+.spark.s3{right:28px;bottom:-4px;width:12px;height:12px;animation-delay:1.3s}
+.h-hello{margin:0 0 22px;font-family:var(--font-display);font-weight:400;font-size:clamp(44px,6vw,76px);line-height:.95;letter-spacing:-.045em;text-wrap:balance}
+.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:36px;margin-top:clamp(56px,6vw,80px);padding-top:28px;border-top:1.5px solid var(--ink)}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15.5px;line-height:1.45}
+.list b{font-weight:700}
+.list .sub{display:block;color:var(--muted)}
+.tools{margin-top:40px;padding:22px;border-radius:30px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;list-style:none;margin:0;padding:0}
+.chips li{padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.95);box-shadow:0 2px 8px rgba(46,51,36,.08);font-size:15px;line-height:1.3;transition:transform .25s,background .25s}
+.chips li:hover{transform:translateY(-3px);background:var(--rose)}
+.tools-note{margin:18px 0 0;text-align:center;font-size:15.5px}
+
+/* kadry: dwa rzędy */
+.strip{margin-top:40px;display:flex;flex-direction:column;gap:6px;-webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
+.track{display:flex;align-items:center;gap:20px;width:max-content;padding:10px 10px}
+.track.left{animation:slideLeft3 20s linear infinite}
+.track.right{animation:slideRight4 13s linear infinite}
+.frame{flex-shrink:0;height:230px !important;width:auto;border-radius:16px;box-shadow:0 14px 28px rgba(46,51,36,.2)}
+
+/* marki */
+.center{text-align:center}
+.center .script{margin-left:2.4em}
+.group-label{margin:48px 0 20px;text-align:center}
+.tiles{display:flex;flex-wrap:wrap;justify-content:center;gap:28px 20px;list-style:none;margin:0;padding:0}
+.brand{width:128px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;font-size:14.5px;line-height:1.3}
+.tile{position:relative;width:128px;height:128px;border-radius:32px;display:grid;place-items:center;padding:14px;overflow:hidden;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 30px rgba(0,0,0,.22),inset 0 1px 0 #fff;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,0) 45%);pointer-events:none}
+.brand:hover .tile{transform:translateY(-7px) rotate(-4deg);box-shadow:0 22px 38px rgba(0,0,0,.28)}
+.tile img{max-width:100%;max-height:100%;object-fit:contain}
+.tile.full{padding:0}
+.tile.full img{width:100%;height:100% !important;max-height:none;object-fit:cover}
+.tile .word{font-family:var(--font-display);font-size:22px;color:var(--ink);letter-spacing:-.03em}
+
+/* sekcje z pracami */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,5vw,72px);align-items:center;margin-top:44px}
+.stickers{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.stk{display:flex;flex-direction:column;margin:0;padding:12px 18px;border-radius:20px;transition:transform .3s}
+.stk:hover{transform:translateY(-4px)}
+.stk b{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,3vw,34px);line-height:1;white-space:nowrap}
+.stk span{font-size:13.5px;line-height:1.35}
+.stk.rose{background:rgba(235,169,181,.75)}
+.bars{margin-top:20px;padding:18px 20px;border-radius:20px;display:grid;gap:10px;max-width:480px}
+.bars-h{margin:0;font-size:14px;font-weight:600}
+.bar-row{display:grid;grid-template-columns:86px 1fr 62px;align-items:center;gap:12px;font-size:13.5px;font-variant-numeric:tabular-nums}
+.bar-row span:last-child{text-align:right}
+.bar{height:12px;border-radius:6px;background:rgba(46,51,36,.08);overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:6px;transform-origin:left center}
+.source{margin:12px 0 0;font-size:13px;color:var(--muted)}
+.browser{border-radius:20px;overflow:hidden;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 28px 60px rgba(46,51,36,.22);border:1px solid rgba(255,255,255,.8)}
+.browser-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid rgba(46,51,36,.08)}
+.dots{display:flex;gap:6px}
+.dots i{width:11px;height:11px;border-radius:50%;background:var(--rose)}
+.dots i:nth-child(2){background:#D9CF9F}
+.dots i:nth-child(3){background:#8C916F}
+.url{flex:1;min-width:0;height:30px;border-radius:9px;background:rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;color:var(--muted)}
+.shot{--shot-h:clamp(320px,36vw,460px);height:var(--shot-h);overflow:hidden;background:#F5F5F7}
+.shot img{width:100%;animation:peek 20s ease-in-out infinite alternate}
+.cap{margin:12px 4px 0;font-size:14px;color:var(--muted)}
+
+.serp{margin-top:clamp(44px,5vw,60px);border-radius:26px;padding:clamp(18px,2.5vw,30px)}
+.search{display:flex;align-items:center;gap:12px;min-height:52px;padding:0 22px;border-radius:999px;border:1px solid rgba(255,255,255,.9);background:rgba(255,255,255,.7);font-size:16px}
+.caret::after{content:"";display:inline-block;width:2px;height:1.05em;margin-left:3px;vertical-align:-.15em;background:var(--rose-ink);animation:caret 1s steps(1) infinite}
+.results{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:30px 36px;margin-top:28px}
+.res{display:flex;flex-direction:column;gap:6px;padding:14px;margin:-14px;border-radius:16px;transition:background .25s,transform .25s}
+.res:hover{background:rgba(255,255,255,.55);transform:translateY(-2px)}
+.res-site{display:flex;align-items:center;gap:10px}
+.fav{flex-shrink:0;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:#fff;border:1px solid rgba(46,51,36,.1)}
+.fav img{width:100%;height:100% !important;object-fit:contain}
+.fav.pad img{padding:3px}
+.res-name{display:block;font-size:14px;font-weight:600;line-height:1.2}
+.res-url{display:block;font-size:12.5px;line-height:1.3;color:var(--muted)}
+.res-title{margin:4px 0 0;font-size:18px;line-height:1.3;font-weight:600;color:var(--wine)}
+a.res-title{text-underline-offset:3px}
+a.res-title:hover{color:var(--ink)}
+.res-desc{margin:0;font-size:14.5px;line-height:1.55;color:#3F4433}
+.res-tag{align-self:flex-start;margin-top:4px;padding:4px 10px;border-radius:999px;background:rgba(235,169,181,.35);color:#7E3A4E;font-size:12.5px;font-weight:600}
+.sitelink{margin-top:2px;padding-left:12px;border-left:2px solid var(--rose);display:flex;flex-direction:column;gap:2px}
+.sitelink a{font-size:15px;line-height:1.35;font-weight:600;color:var(--wine);text-underline-offset:3px}
+.sitelink span{font-size:13px;color:var(--muted)}
+
+.board{margin:0;padding:12px 12px 14px;border-radius:14px;transform:rotate(-2.5deg);transition:transform .45s cubic-bezier(.2,.8,.2,1);max-width:480px;justify-self:center}
+.board:hover{transform:rotate(0) scale(1.02)}
+.board img{border-radius:6px}
+.board figcaption{margin-top:8px;font-family:var(--font-script);font-size:32px;line-height:1.1;text-align:center;color:var(--cream)}
+.gcard{padding:20px;border-radius:22px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.gcard:hover{transform:translateY(-6px)}
+.gcard h3{margin:0 0 8px;font-family:var(--font-display);font-weight:400;font-size:14px;line-height:1.35;letter-spacing:.04em}
+.gcard p{margin:0;font-size:15px;line-height:1.6}
+.links{display:flex;flex-wrap:wrap;gap:0 18px}
+.links a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15.5px;font-weight:600;text-underline-offset:3px}
+
+.big-stat{display:inline-flex;align-items:baseline;gap:14px;margin-top:26px;padding:16px 24px;border-radius:24px}
+.big-stat b{font-family:var(--font-display);font-weight:400;font-size:clamp(56px,7vw,88px);line-height:.9;color:var(--rose-ink)}
+.big-stat span{font-size:16px;line-height:1.35;max-width:14ch}
+.partners{position:relative;overflow:hidden;padding:26px;border-radius:26px;background:rgba(14,16,10,.8);-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);border:1px solid rgba(255,255,255,.14);box-shadow:0 24px 50px rgba(14,16,10,.3),inset 0 1px 0 rgba(255,255,255,.12);color:var(--cream)}
+.partners::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.12),rgba(255,255,255,0));animation:sweep 6s ease-in-out infinite;pointer-events:none}
+.partners .label{color:var(--rose)}
+.partners ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.partners li{padding:7px 14px;border-radius:999px;border:1px solid rgba(252,242,196,.35);background:rgba(252,242,196,.06);font-size:14.5px;transition:background .25s,border-color .25s}
+.partners li:hover{background:rgba(235,169,181,.25);border-color:var(--rose)}
+.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:18px;margin-top:clamp(40px,5vw,56px)}
+
+/* przed i po */
+.ba{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:clamp(20px,3vw,40px);align-items:end;margin-top:clamp(44px,5vw,64px)}
+.ba-item{margin:0;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.ba-item .browser{width:100%}
+.ba-tag{padding:6px 16px;border-radius:999px;background:var(--ink);color:var(--cream);font-family:var(--font-display);font-size:13px;letter-spacing:.04em}
+.ba-tag.rose{background:var(--rose);color:var(--ink)}
+.ba .shot{--shot-h:clamp(280px,30vw,420px)}
+.browser.old .shot img{filter:saturate(.7)}
+.vid{display:block;width:100%;height:auto;background:#F5F5F7}
+.builds{margin-top:24px;padding:16px 24px;border-radius:24px}
+.acc{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.acc details{border-radius:18px;padding:0 20px}
+.acc summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:52px;cursor:pointer;list-style:none;font-family:var(--font-display);font-size:15px;letter-spacing:.02em}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";flex-shrink:0;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--rose);color:var(--ink);font-size:20px;line-height:1;transition:transform .3s}
+.acc details[open] summary::after{transform:rotate(45deg)}
+.acc details p{margin:0;padding:0 0 18px;font-size:15.5px;line-height:1.6;animation:accIn .35s ease both}
+.rotator{display:block;height:1.15em;overflow:hidden;font-family:var(--font-display);font-size:clamp(30px,3.6vw,46px);line-height:1.15;letter-spacing:-.03em;color:var(--rose)}
+.rot-list{display:block;animation:rot 11s cubic-bezier(.7,0,.3,1) infinite}
+.rot-list span{display:block;height:1.15em;white-space:nowrap}
+/* galeria */
+.gallery{columns:3 240px;column-gap:32px;margin-top:56px}
+.gal{break-inside:avoid;margin:0 0 32px;background:#fff;padding:10px;box-shadow:0 18px 36px rgba(0,0,0,.3);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.gal img{width:100%}
+.gal.t1{transform:rotate(-2.5deg)}
+.gal.t2{transform:rotate(2deg)}
+.gal.t3{transform:rotate(-1.2deg)}
+.gal.t4{transform:rotate(2.6deg)}
+.gal:hover{transform:rotate(0) scale(1.03)}
+
+/* social */
+.li-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:40px;padding:16px 20px;border-radius:24px}
+.avatar{width:58px;height:58px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--rose)}
+.avatar img{width:100%;height:100% !important;object-fit:cover;object-position:50% 30%}
+.li-who{flex:1;min-width:200px}
+.li-who b{display:block;font-family:var(--font-display);font-weight:400;font-size:18px;letter-spacing:-.01em}
+.li-who span{font-size:14.5px}
+.site .btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;background:var(--cream);color:var(--ink);font-family:var(--font-display);font-size:13px;text-decoration:none;transition:transform .25s,background .25s}
+.site .btn:hover{transform:translateY(-2px);background:#fff}
+.lposts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px;margin-top:20px}
+.lpost{display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:rgba(255,255,255,.88);color:var(--ink);box-shadow:0 18px 40px rgba(0,0,0,.25);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.lpost:hover{transform:translateY(-6px) rotate(-.6deg)}
+.lpost-img{position:relative;aspect-ratio:1/1;overflow:hidden;background:#EEE}
+.lpost-img img{width:100%;height:100% !important;object-fit:cover}
+.lpost-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px}
+.lpost-body p{margin:0;font-size:15px;line-height:1.5}
+.lpost-kind{font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--wine)}
+.lpost-stats{font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.posts{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:30px 40px;margin-top:28px}
+.post{margin:0;background:#fff;padding:10px 10px 12px;box-shadow:0 18px 36px rgba(0,0,0,.3);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.post.t1{transform:rotate(-4deg)}
+.post.t2{transform:rotate(3deg)}
+.post.t3{transform:rotate(-2deg)}
+.post:hover{transform:rotate(0) scale(1.04)}
+.post img{width:min(220px,72vw);aspect-ratio:1/1;object-fit:cover}
+.post figcaption{margin-top:8px;max-width:220px;font-style:italic;font-size:13.5px;line-height:1.4;text-align:center;color:#3F4433}
+
+/* kontakt */
+.contact{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(36px,6vw,80px);align-items:center}
+.h-contact{margin:0;font-family:var(--font-display);font-weight:400;font-size:clamp(52px,7vw,100px);line-height:.85;letter-spacing:-.05em}
+.contact-links{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:26px}
+.contact-links a{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 20px;border-radius:999px;font-size:clamp(17px,1.8vw,20px);font-weight:600;text-decoration:none;transition:transform .25s,color .25s}
+.contact-links a:hover{transform:translateX(6px);color:var(--rose)}
+.door{position:relative;width:100%;max-width:380px;justify-self:center}
+.door img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:22px;box-shadow:0 26px 54px rgba(0,0,0,.35);transform:rotate(2deg)}
+.foot{background:var(--olive-deep);color:var(--cream);padding-bottom:84px}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 24px;padding-block:10px 22px;border-top:1px solid rgba(252,242,196,.25)}
+.foot nav{display:flex;flex-wrap:wrap;gap:0 22px}
+.foot nav a{display:inline-flex;align-items:center;min-height:44px;font-family:var(--font-display);font-size:13px;text-decoration:none}
+.foot p{margin:0;font-size:14px;color:#E4E2C6}
+
+@media (max-width:900px){
+  .about,.split,.contact,.ba{grid-template-columns:minmax(0,1fr)}
+  .split .board{order:2}
+  .hello{right:-8px}
+}
+@media (max-width:600px){
+  .frame{height:170px !important}
+  .dock-nav a{padding:0 11px;font-size:12px}
+  .hero-under{justify-content:center}
+}
+
+@keyframes chIn{from{opacity:0;transform:translateY(.5em) rotate(8deg)}to{opacity:1;transform:none}}
+@keyframes kenburns{from{transform:scale(1.1)}to{transform:scale(1)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-8px) rotate(-6deg)}}
+@keyframes shine{from{background-position:120% 0}to{background-position:-140% 0}}
+@keyframes twinkle{0%,100%{transform:scale(.3) rotate(0);opacity:.2}50%{transform:scale(1) rotate(45deg);opacity:1}}
+@keyframes slideLeft3{from{transform:translateX(0)}to{transform:translateX(-33.3333%)}}
+@keyframes slideRight4{from{transform:translateX(-25%)}to{transform:translateX(0)}}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,-40px) scale(1.12)}}
+@keyframes peek{0%,10%{transform:translateY(0)}90%,100%{transform:translateY(calc(-100% + var(--shot-h)))}}
+@keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes caret{50%{opacity:0}}
+@keyframes sweep{0%,30%{left:-60%}70%,100%{left:120%}}
+@keyframes rot{0%,16%{transform:translateY(0)}20%,36%{transform:translateY(-1.15em)}40%,56%{transform:translateY(-2.3em)}60%,76%{transform:translateY(-3.45em)}80%,96%{transform:translateY(-4.6em)}100%{transform:translateY(-5.75em)}}
+@keyframes accIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes rise{from{transform:translateY(56px)}to{transform:none}}
+@keyframes dockIn{from{opacity:0;visibility:hidden;transform:translate(-50%,30px)}to{opacity:1;visibility:visible;transform:translate(-50%,0)}}
+
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+    .bar-fill{animation:barGrow linear both;animation-timeline:view();animation-range:entry 10% entry 100%}
+  }
+}
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion: no-preference){
+    .dock-nav{animation:dockIn linear both;animation-timeline:scroll(root);animation-range:0 420px}
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  .site *,.site *::before,.site *::after{animation:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+  .strip{overflow-x:auto}
+  .rotator{height:auto}
+  .rot-list .rot-dup{display:none}
+}
+</style>
+<!--HELMET-END-->
+</head>
+<body>
+<!--SITE-START-->
+<div class="site">
+
+<nav class="dock-nav" aria-label="Szybkie menu">
+  <a href="#start">portfolio</a>
+  <a href="#o-mnie">o mnie</a>
+  <a href="#prace">prace</a>
+  <a href="#kontakt">kontakt</a>
+</nav>
+
+<!-- START -->
+<header class="hero" id="start">
+  <img class="hero-img" src="assets/img/ogrod.jpg" alt="Julianna Janusz w granatowej sukience, siedzi na trawie w ogrodzie" width="2400" height="1601">
+  <nav class="hero-nav" aria-label="Menu">
+    <a href="#start">portfolio</a>
+    <a href="#o-mnie">o mnie</a>
+    <a href="#prace">prace</a>
+    <a href="#kontakt">kontakt</a>
+  </nav>
+  <div class="hero-inner">
+    <div class="name-wrap">
+      <h1 class="hero-name" aria-label="Julianna Janusz"><span class="first" aria-hidden="true"><span class="ch" style="animation-delay: 250ms">j</span><span class="ch" style="animation-delay: 320ms">u</span><span class="ch" style="animation-delay: 390ms">l</span><span class="ch" style="animation-delay: 460ms">i</span><span class="ch" style="animation-delay: 530ms">a</span><span class="ch" style="animation-delay: 600ms">n</span><span class="ch" style="animation-delay: 670ms">n</span><span class="ch" style="animation-delay: 740ms">a</span></span></h1>
+      <div class="hero-under">
+        <p class="hero-sub">content marketing • seo • branding</p>
+        <span class="hero-last" aria-hidden="true">janusz</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-links">
+    <a href="https://www.linkedin.com/in/julianna-janusz/"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 10v7"></path><path d="M8 7v.01"></path><path d="M12 17v-4a2 2 0 0 1 4 0v4"></path><path d="M12 10v7"></path></svg>LinkedIn</a>
+    <a href="mailto:januszjulianna@gmail.com"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>januszjulianna@gmail.com</a>
+  </div>
+</header>
+
+<main>
+
+<!-- O MNIE -->
+<section class="band cream" id="o-mnie">
+  <span class="orb a" aria-hidden="true"></span>
+  <span class="orb b" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="about">
+      <div class="photo-card reveal">
+        <img src="assets/img/kadr.jpg" alt="Julianna robi palcami ramkę wokół twarzy" width="1000" height="1500">
+        <div class="hello" aria-hidden="true">
+          <p class="shine">cześć!</p>
+          <svg class="spark s1" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#EBA9B5"></path></svg>
+          <svg class="spark s2" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#B8627A"></path></svg>
+          <svg class="spark s3" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#EBA9B5"></path></svg>
+        </div>
+      </div>
+      <div class="reveal">
+        <h2 class="h-hello">tu julianna.</h2>
+        <p class="lead">Odkąd pamiętam, piszę. Eseje, wiersze, a czasem też teksty za innych, więc copywriting zaczął się u mnie dużo wcześniej, niż poznałam to słowo :) W szkole i na studiach robiłam projekty graficzne, a po pracy malowałam i rysowałam.</p>
+        <p class="lead">Z pasji zrobiło się hobby: pisałam w redakcji Grajmerek, a potem sama zgłaszałam się do wydawnictw i recenzowałam ich książki. To było moje marzenie i udało się je spełnić.</p>
+        <p class="lead">Dziś łączę strategię, branding i copywriting tak, żeby ludzie zobaczyli, jaką duszę ma firma. Przejmuję inicjatywę wszędzie, gdzie się da.</p>
+      </div>
+    </div>
+    <div class="cols2">
+      <div class="reveal">
+        <h3 class="label">studia</h3>
+        <ul class="list">
+          <li><b>Pedagogika</b>, magisterskie<span class="sub">Uniwersytet Śląski, 2018-2023</span></li>
+          <li><b>Wychowanie do życia w rodzinie</b>, podyplomowe<span class="sub">WSKZ, 2021-2023</span></li>
+          <li><b>Nauczanie języka polskiego</b>, podyplomowe<span class="sub">WSZiP w Wałbrzychu, 2023-2024</span></li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <h3 class="label">kursy</h3>
+        <ul class="list">
+          <li>Introduction to Social Media Marketing<span class="sub">Meta, 07.2026</span></li>
+          <li>Foundations of Project Management<span class="sub">Google, 07.2026</span></li>
+          <li>Adobe Content Creator<span class="sub">Adobe, 07.2026</span></li>
+          <li>Canva AI 2.0<span class="sub">Małgorzata Siedlik, 06.2026</span></li>
+          <li>Wykorzystanie AI w rozwoju firmy<span class="sub">Google i SGH, 10.2025</span></li>
+          <li>semKRK Workshop Edition<span class="sub">DevaGroup</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tools glass reveal">
+      <h3 class="label center">narzędzia</h3>
+      <ul class="chips"><li>WordPress</li><li>HubSpot</li><li>Google Search Console</li><li>GA4</li><li>Senuto</li><li>Canva</li><li>CapCut</li><li>Adobe</li><li>Lightroom</li><li>Meta</li><li>Miro</li><li>ClickUp</li><li>Asana</li><li>Trello</li><li>Jira</li><li>Notion</li><li>Slack</li><li>Claude</li><li>ChatGPT</li><li>MS Office</li></ul>
+      <p class="tools-note">Lista jest otwarta: jak używacie czegoś innego, chętnie się nauczę.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KADRY -->
+<section class="band pink" aria-labelledby="kadry-h">
+  <div class="wrap">
+    <h2 class="h2" id="kadry-h">kadry <span class="script">z pracy i po godzinach</span></h2>
+  </div>
+  <div class="strip">
+    <div class="track left">
+      <img class="frame" src="assets/img/stoisko.jpg" alt="Zespół Selly na stoisku targowym" width="1400" height="1050">
+      <img class="frame" src="assets/img/gory-chata.jpg" alt="Wierzbówka kwitnąca przed drewnianą chatą w górach, moje zdjęcie" width="400" height="600">
+      <img class="frame" src="assets/img/targi-selfie.jpg" alt="Julianna z identyfikatorem wystawcy na targach" width="800" height="1067">
+      <img class="frame" src="assets/img/gory-wierzbowka.jpg" alt="Kwiaty wierzbówki z bliska, moje zdjęcie z gór" width="900" height="600">
+      <img class="frame" src="assets/img/wydarzenie.jpg" alt="Julianna z koleżankami na wydarzeniu" width="1200" height="800">
+      <img class="frame" src="assets/img/stoisko.jpg" alt="" aria-hidden="true" width="1400" height="1050">
+      <img class="frame" src="assets/img/gory-chata.jpg" alt="" aria-hidden="true" width="400" height="600">
+      <img class="frame" src="assets/img/targi-selfie.jpg" alt="" aria-hidden="true" width="800" height="1067">
+      <img class="frame" src="assets/img/gory-wierzbowka.jpg" alt="" aria-hidden="true" width="900" height="600">
+      <img class="frame" src="assets/img/wydarzenie.jpg" alt="" aria-hidden="true" width="1200" height="800">
+      <img class="frame" src="assets/img/stoisko.jpg" alt="" aria-hidden="true" width="1400" height="1050">
+      <img class="frame" src="assets/img/gory-chata.jpg" alt="" aria-hidden="true" width="400" height="600">
+      <img class="frame" src="assets/img/targi-selfie.jpg" alt="" aria-hidden="true" width="800" height="1067">
+      <img class="frame" src="assets/img/gory-wierzbowka.jpg" alt="" aria-hidden="true" width="900" height="600">
+      <img class="frame" src="assets/img/wydarzenie.jpg" alt="" aria-hidden="true" width="1200" height="800">
+    </div>
+    <div class="track right">
+      <img class="frame" src="assets/img/zespol.jpg" alt="Zdjęcie grupowe zespołu na torze gokartowym" width="800" height="1067">
+      <img class="frame" src="assets/img/gory-szczyt.jpg" alt="Górski stok w świetle przebijającym przez chmury, moje zdjęcie" width="900" height="600">
+      <img class="frame" src="assets/img/kaski.jpg" alt="Dwie osoby w kaskach gokartowych" width="800" height="1067">
+      <img class="frame" src="assets/img/kapelusznik.jpg" alt="Julianna w przebraniu Szalonego Kapelusznika" width="800" height="1092">
+      <img class="frame" src="assets/img/zespol.jpg" alt="" aria-hidden="true" width="800" height="1067">
+      <img class="frame" src="assets/img/gory-szczyt.jpg" alt="" aria-hidden="true" width="900" height="600">
+      <img class="frame" src="assets/img/kaski.jpg" alt="" aria-hidden="true" width="800" height="1067">
+      <img class="frame" src="assets/img/kapelusznik.jpg" alt="" aria-hidden="true" width="800" height="1092">
+      <img class="frame" src="assets/img/zespol.jpg" alt="" aria-hidden="true" width="800" height="1067">
+      <img class="frame" src="assets/img/gory-szczyt.jpg" alt="" aria-hidden="true" width="900" height="600">
+      <img class="frame" src="assets/img/kaski.jpg" alt="" aria-hidden="true" width="800" height="1067">
+      <img class="frame" src="assets/img/kapelusznik.jpg" alt="" aria-hidden="true" width="800" height="1092">
+      <img class="frame" src="assets/img/zespol.jpg" alt="" aria-hidden="true" width="800" height="1067">
+      <img class="frame" src="assets/img/gory-szczyt.jpg" alt="" aria-hidden="true" width="900" height="600">
+      <img class="frame" src="assets/img/kaski.jpg" alt="" aria-hidden="true" width="800" height="1067">
+      <img class="frame" src="assets/img/kapelusznik.jpg" alt="" aria-hidden="true" width="800" height="1092">
+    </div>
+  </div>
+</section>
+
+<!-- MARKI -->
+<section class="band olive" id="marki">
+  <span class="orb a" aria-hidden="true"></span>
+  <span class="orb b" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="center reveal">
+      <h2 class="h2">marki <span class="script">z którymi pracowałam</span></h2>
+    </div>
+    <p class="label group-label">pracowałam dla</p>
+    <ul class="tiles">
+      <li class="brand reveal"><span class="tile"><img src="assets/logos/selly.png" alt="Selly" width="480" height="187"></span>Selly</li>
+      <li class="brand reveal"><span class="tile"><img src="assets/logos/kce.png" alt="Krajowe Centrum Edukacyjne" width="480" height="480"></span>Krajowe Centrum Edukacyjne</li>
+      <li class="brand reveal"><span class="tile"><img src="assets/logos/takaoto.png" alt="takaoto" width="480" height="96"></span>takaoto</li>
+      <li class="brand reveal"><span class="tile"><img src="assets/logos/grajmerki.png" alt="Grajmerki" width="480" height="480"></span>Grajmerki</li>
+      <li class="brand reveal"><span class="tile"><img src="assets/logos/kociolek.png" alt="Popkulturowy Kociołek" width="480" height="171"></span>Popkulturowy Kociołek</li>
+      <li class="brand reveal"><span class="tile"><img src="assets/logos/ipcc.jpg" alt="Instytut Przeciwdziałania Chorobom Cywilizacyjnym" width="447" height="447"></span>IPCC</li>
+      <li class="brand reveal"><span class="tile"><img src="assets/logos/ikds.png" alt="Instytut Kreatywnych Działań Społecznych" width="347" height="331"></span>IKDS</li>
+    </ul>
+    <p class="label group-label">wydawnictwa, dla których recenzowałam</p>
+    <ul class="tiles">
+      <li class="brand reveal"><span class="tile full"><img src="assets/logos/uroboros.jpg" alt="Uroboros" width="480" height="480"></span>Uroboros</li>
+      <li class="brand reveal"><span class="tile"><img src="assets/logos/zysk.jpg" alt="Zysk i S-ka Wydawnictwo" width="480" height="178"></span>Zysk i S-ka</li>
+      <li class="brand reveal"><span class="tile"><img src="assets/logos/drageus.jpg" alt="Drageus Publishing House" width="480" height="152"></span>Drageus</li>
+      <li class="brand reveal"><span class="tile"><span class="word">Young</span></span>Young</li>
+    </ul>
+  </div>
+</section>
+
+<div id="prace">
+
+<!-- SEO I TEKSTY -->
+<section class="band cream" aria-labelledby="seo-h">
+  <span class="orb a" aria-hidden="true"></span>
+  <span class="orb c" aria-hidden="true"></span>
+  <div class="wrap">
+    <h2 class="h2 reveal" id="seo-h">seo <span class="script">i teksty dla różnych marek</span></h2>
+    <div class="split">
+      <div class="reveal">
+        <p class="lead">Piszę dla różnych firm, niezależnie od branży. Na oko licząc, mam na koncie ponad 300 tekstów blogowych, więc można powiedzieć, że zjadłam na tym zęby (a może bardziej palce na klawiaturze).</p>
+        <p class="lead">Tam, gdzie liczy się Google, dobieram tematy i frazy, robię research i pilnuję E-E-A-T i linkowania.</p>
+      </div>
+      <div class="reveal">
+        <p class="label">przykład: blog Selly, rok do roku</p>
+        <div class="stickers">
+          <p class="stk glass rose"><b>+181%</b><span>kliknięć z Google</span></p>
+          <p class="stk glass"><b>+383%</b><span>wyświetleń w Google</span></p>
+        </div>
+        <div class="bars glass" role="img" aria-label="Kliknięcia z Google na blogu Selly: 7 982 w okresie 03-12.2024 i 22 496 w okresie 03-12.2025">
+          <p class="bars-h">Kliknięcia z Google</p>
+          <div class="bar-row"><span>03-12.2024</span><span class="bar"><span class="bar-fill" style="width: 35.5%; background: #8C916F"></span></span><span>7 982</span></div>
+          <div class="bar-row"><span><b>03-12.2025</b></span><span class="bar"><span class="bar-fill" style="width: 100%; background: #B8627A"></span></span><span><b>22 496</b></span></div>
+        </div>
+        <p class="source">Źródło: Google Search Console.</p>
+      </div>
+    </div>
+
+    <div class="ba reveal">
+      <figure class="ba-item">
+        <span class="ba-tag">przed</span>
+        <div class="browser old">
+          <div class="browser-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>selly.pl/blog</span></div>
+          <div class="shot"><img src="assets/img/blog-przed.jpg" alt="Stary blog Selly: dwie kolumny wpisów z pomarańczowymi grafikami i lista kategorii z boku" width="1000" height="1435"></div>
+        </div>
+      </figure>
+      <figure class="ba-item">
+        <span class="ba-tag rose">po</span>
+        <div class="browser">
+          <div class="browser-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>selly.pl/blog</span></div>
+          <div class="shot"><img src="assets/img/blog-nowy.jpg" alt="Nowy blog Selly: wyróżniony wpis, kategorie jako przyciski i najnowsze wpisy" width="1000" height="1470"></div>
+        </div>
+      </figure>
+    </div>
+    <p class="cap">Blog Selly przed i po. Stronę bloga, wpis i kategorie rozpisałam ja, a zaprojektował je grafik.</p>
+
+    <div class="serp glass reveal">
+      <div class="search" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A5F48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+        <span class="caret">co mogę dla ciebie napisać...</span>
+      </div>
+      <div class="results">
+        <div class="res">
+          <div class="res-site"><span class="fav"><img src="assets/logos/selly-mark.png" alt="" width="160" height="160"></span><span><span class="res-name">Selly</span><span class="res-url">selly.pl › blog</span></span></div>
+          <p class="res-title">Jak wybrać platformę e-commerce? Poradnik dla osób bez wiedzy IT</p>
+          <p class="res-desc">Jeden z moich wpisów na blogu. Piszę też o KSeF, AI Act, PPWR i GPSR, z ekspertami. Do tego audyt bloga i metaopisy dla 61 podstron.</p>
+          <span class="res-tag">blog firmowy</span>
+        </div>
+        <div class="res">
+          <div class="res-site"><span class="fav pad"><img src="assets/logos/kce.png" alt="" width="480" height="480"></span><span><span class="res-name">Krajowe Centrum Edukacyjne</span><span class="res-url">artykuły</span></span></div>
+          <p class="res-title">Artykuły eksperckie według briefów klienta</p>
+          <p class="res-desc">Od sprzedaży i networkingu po fotografię i sport. Research, wywiady jako źródła, E-E-A-T i linkowanie.</p>
+          <span class="res-tag">artykuł SEO</span>
+        </div>
+        <div class="res">
+          <div class="res-site"><span class="fav pad"><img src="assets/logos/ipcc.jpg" alt="" width="447" height="447"></span><span><span class="res-name">Polskie Radio RDC</span><span class="res-url">rdc.pl › aktualności › patronaty</span></span></div>
+          <a class="res-title" href="https://www.rdc.pl/aktualnosci/patronaty/nasze-zdrowie-nasza-przyszlosc-instytut-przeciwdzialania-chorobom-cywilizacyjnym-ipcc-walczy-z-chorobami-cywilizacyjnymi-poprzez-edukacje-i-dialog-polityczny_WRkkXBntdxO8I2rzBudH">„Nasze zdrowie, nasza przyszłość” - IPCC walczy z chorobami cywilizacyjnymi...</a>
+          <p class="res-desc">Mój tekst o projekcie Instytutu Przeciwdziałania Chorobom Cywilizacyjnym, opublikowany w ramach patronatu.</p>
+          <span class="res-tag">patronat medialny</span>
+        </div>
+        <div class="res">
+          <div class="res-site"><span class="fav"><img src="assets/logos/ikds.png" alt="" width="347" height="331"></span><span><span class="res-name">IKDS</span><span class="res-url">ikds.pl › post</span></span></div>
+          <a class="res-title" href="https://www.ikds.pl/post/make-the-change-now">Make the change NOW!</a>
+          <p class="res-desc">Opis projektu dla młodych liderów zmiany społecznej.</p>
+          <div class="sitelink"><a href="https://www.ikds.pl/post/we%C5%BA-udzia%C5%82-w-projekcie-make-the-change-now-i-zaanga%C5%BCuj-si%C4%99-spo%C5%82ecznie">Weź udział w projekcie Make the change NOW! i zaangażuj się społecznie</a><span>ogłoszenie rekrutacyjne</span></div>
+          <span class="res-tag">opis i rekrutacja</span>
+        </div>
+        <div class="res">
+          <div class="res-site"><span class="fav"><img src="assets/logos/grajmerki.png" alt="" width="480" height="480"></span><span><span class="res-name">Grajmerki</span><span class="res-url">recenzje i analizy</span></span></div>
+          <p class="res-title">Analizy i recenzje gier, na blogu i na YouTube</p>
+          <p class="res-desc">Teksty pisane pod SEO, z wersjami wideo i podkładaniem głosu. Współpraca z markami gamingowymi, m.in. Xbox.</p>
+          <span class="res-tag">recenzja</span>
+        </div>
+        <div class="res">
+          <div class="res-site"><span class="fav"><img src="assets/logos/kociolek-mark.png" alt="" width="160" height="160"></span><span><span class="res-name">Popkulturowy Kociołek</span><span class="res-url">recenzje</span></span></div>
+          <p class="res-title">Recenzje książek i gier dla wydawnictw</p>
+          <p class="res-desc">W tekście i wideo, we współpracy z wydawnictwami Uroboros, Young, Zysk i S-ka i Drageus.</p>
+          <span class="res-tag">recenzja</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIA -->
+<section class="band olive" aria-labelledby="strategia-h">
+  <span class="orb a" aria-hidden="true"></span>
+  <span class="orb b" aria-hidden="true"></span>
+  <div class="wrap">
+    <h2 class="h2 reveal" id="strategia-h">strategia <span class="script">treści i stron www</span></h2>
+    <div class="split">
+      <figure class="board glass reveal">
+        <img src="assets/img/miro-kategorie.jpg" alt="Makieta w Miro: podstrona kategorii bloga z wyróżnionym wpisem, listą wpisów i wyszukiwarką w kategorii" width="1000" height="1399">
+        <figcaption>przykładowa makieta w Miro</figcaption>
+      </figure>
+      <div class="reveal">
+        <p class="lead">Zaczynałam od intuicji. Potem dołożyłam do niej wiedzę z warsztatów i szkoleń. Dzięki temu wiem, do kogo mówisz, zanim napiszę pierwsze zdanie.</p>
+        <div class="builds glass">
+          <span class="rotator"><span class="rot-list"><span>filary SEO</span><span>ścieżki lejka</span><span>buyer persony</span><span>antypersony</span><span>wartości marki</span><span class="rot-dup" aria-hidden="true">filary SEO</span></span></span>
+        </div>
+        <div class="acc">
+          <details class="glass" open><summary>fundament marki</summary><p>Wartości, persony i lejek w jednym miejscu. Każdy tekst i kampania grają wtedy do jednej bramki.</p></details>
+          <details class="glass"><summary>strony, które prowadzą</summary><p>Treść i układ, dzięki którym klient od razu wie, co dostaje i gdzie kliknąć. Makieta w Miro albo w Claude Design.</p></details>
+          <details class="glass"><summary>content hub w Claude</summary><p>Baza wiedzy o marce: persony, styl, oferta i gotowe prompty. Zespół pisze spójnie i szybciej.</p></details>
+          <details class="glass"><summary>newsletter</summary><p>Od formularza zapisu po segmenty, żeby maile trafiały do ludzi, którzy chcą je czytać.</p></details>
+          <details class="glass"><summary>case studies</summary><p>Historie klientów, które przekonują kolejnych: kwestionariusz, zgody, cytaty i gotowy tekst.</p></details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSTWA -->
+<section class="band cream" aria-labelledby="partnerstwa-h">
+  <span class="orb a" aria-hidden="true"></span>
+  <span class="orb b" aria-hidden="true"></span>
+  <div class="wrap">
+    <h2 class="h2 reveal" id="partnerstwa-h">partnerstwa <span class="script">od kontaktu do publikacji</span></h2>
+    <div class="split">
+      <div class="reveal">
+        <p class="lead">Partnerstwa prowadzę od pierwszej wiadomości do gotowego materiału: inicjuję rozmowę, koordynuję temat w firmie i dowożę publikację.</p>
+        <p class="big-stat glass"><b>15+</b><span>aktywnych relacji partnerskich</span></p>
+      </div>
+      <div class="partners reveal">
+        <p class="label">marki, z którymi robiłam treści</p>
+        <ul>
+          <li>BLIK</li><li>PayU</li><li>Kaufland</li><li>Luigi's Box</li><li>Elephate</li><li>Semcore</li><li>Marketer Plus</li><li>ecommerce.pl</li><li>Apilo</li><li>Autopay</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cards4">
+      <div class="gcard glass reveal"><h3>e-booki i raporty</h3><p>Artykuły eksperckie do e-booka Luigi's Box o AI w e-commerce, raportu Elephate o SEO w e-commerce beauty i e-booka Marketer Plus.</p></div>
+      <div class="gcard glass reveal"><h3>targi i wydarzenia</h3><p>Na Targi Expo Łódź oferty, prezentacja i landing page w HubSpot. Na Ecommerce Event 4.0 reklama firmy.</p></div>
+      <div class="gcard glass reveal"><h3>rankingi i patronaty</h3><p>Materiały do 2 rankingów platform i narzędzi e-commerce oraz patronat medialny raportu Semcore.</p></div>
+      <div class="gcard glass reveal"><h3>Kaufland</h3><p>Opis integracji, wymiana wpisów i materiałów na social media, newsletter z ofertą. Cała komunikacja po angielsku.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section class="band olive" aria-labelledby="social-h">
+  <span class="orb a" aria-hidden="true"></span>
+  <span class="orb b" aria-hidden="true"></span>
+  <div class="wrap">
+    <h2 class="h2 reveal" id="social-h">social media <span class="script">i wideo</span></h2>
+    <p class="lead reveal" style="margin-top: 32px">Prowadzę swój LinkedIn i odpowiadam za LinkedIn firmy: strategię i oprawę wizualną. Robię też grafiki, rolki, krótkie filmy i relacje na żywo.</p>
+
+    <div class="li-head glass reveal">
+      <span class="avatar"><img src="assets/img/avatar.jpg" alt="" width="200" height="200"></span>
+      <div class="li-who"><b>Julianna Janusz</b><span>674 obserwujących na LinkedIn</span></div>
+      <a class="btn" href="https://www.linkedin.com/in/julianna-janusz/">mój profil</a>
+    </div>
+    <div class="lposts">
+      <article class="lpost reveal">
+        <div class="lpost-img"><img src="assets/img/post-spotify.jpg" alt="Pierwszy slajd karuzeli: Internet właśnie został #Spotified" width="800" height="800"></div>
+        <div class="lpost-body">
+          <span class="lpost-kind">karuzela · 9 slajdów</span>
+          <p>„Przekopałam się przez setki postów i widzę takie trzy poziomy wykorzystania zasięgów”</p>
+          <span class="lpost-stats">3 351 wyświetleń · 24 reakcje · 8 komentarzy</span>
+        </div>
+      </article>
+      <article class="lpost reveal">
+        <div class="lpost-img"><img src="assets/img/schody.jpg" alt="Zdjęcie do posta: dwie osoby schodzą po schodach" width="800" height="1060"></div>
+        <div class="lpost-body">
+          <span class="lpost-kind">post ze zdjęciem</span>
+          <p>„Wbijałam się do marketingu łokciami, bo pedagogika w CV nie otwierała mi drzwi...”</p>
+          <span class="lpost-stats">1 145 wyświetleń · 16 reakcji</span>
+        </div>
+      </article>
+      <article class="lpost reveal">
+        <div class="lpost-img"><img src="assets/img/post-oatly.jpg" alt="Okładka karuzeli: Buntownik, który zaczął się dogadywać z systemem?" width="800" height="800"></div>
+        <div class="lpost-body">
+          <span class="lpost-kind">karuzela · 5 slajdów</span>
+          <p>„Marka, która zbudowała się na buncie przeciw korporacjom...”</p>
+          <span class="lpost-stats">306 wyświetleń · 3 reakcje</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="gallery">
+      <figure class="gal t1"><img src="assets/img/post-selly-gta.jpg" alt="Grafika do posta Selly: Bierzesz wolne na premierę GTA VI?" width="900" height="903" loading="lazy"></figure>
+      <figure class="gal t2"><img src="assets/img/post-burga.jpg" alt="Okładka mojej karuzeli: Dlaczego BURGA robi świetny marketing?" width="800" height="1000" loading="lazy"></figure>
+      <figure class="gal t3"><img src="assets/img/notatki-selly.jpg" alt="Moje zdjęcie do posta na LinkedIn z notatką: Sprawdzić, o co ludzie pytają w komentarzach na Reddicie" width="800" height="1003" loading="lazy"></figure>
+      <figure class="gal t4"><img src="assets/img/ipcc-rekrutacja.jpg" alt="Post rekrutacyjny projektu Nasza przyszłość, nasze zdrowie" width="800" height="800" loading="lazy"></figure>
+      <figure class="gal t2"><img src="assets/img/selly-homedecor.jpg" alt="Reklama Selly: nowoczesny szablon sklepu dla branży home decor" width="800" height="1000" loading="lazy"></figure>
+      <figure class="gal t1"><img src="assets/img/post-tymbark.jpg" alt="Okładka mojej karuzeli: Tymbark zamienia nas w copywriterów?" width="800" height="800" loading="lazy"></figure>
+      <figure class="gal t4"><img src="assets/img/klb-alfabet.jpg" alt="Grafika dla KLB Akademii Szkoleń: długość alfabetu w różnych krajach" width="800" height="671" loading="lazy"></figure>
+      <figure class="gal t3"><img src="assets/img/ekipa-mtcn.jpg" alt="Post Poznaj ekipę projektu z projektu Make the change NOW!" width="800" height="800" loading="lazy"></figure>
+      <figure class="gal t3"><video class="vid" src="assets/video/selly-expo.mp4" poster="assets/img/selly-expo.jpg" width="720" height="720" autoplay muted loop playsinline controls aria-label="Krótki film z wydarzeń branżowych, na których była Selly"></video></figure>
+      <figure class="gal t2"><img src="assets/img/post-sharebee.jpg" alt="Okładka mojej karuzeli: notatki z Sharebee Linking Fest" width="800" height="1000" loading="lazy"></figure>
+      <figure class="gal t1"><img src="assets/img/selly-netboard.jpg" alt="Baner Selly: Więcej niż wsparcie" width="580" height="400" loading="lazy"></figure>
+      <figure class="gal t4"><img src="assets/img/post-ndsz.jpg" alt="Post zapowiadający projekt Nie daj się zatrzymać!" width="800" height="800" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- KONTAKT -->
+<section class="band deep" id="kontakt">
+  <span class="orb a" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="contact">
+      <div class="reveal">
+        <h2 class="h-contact">pogadajmy <span class="script">o Twoim marketingu</span></h2>
+        <p class="lead" style="margin-top: 28px">Szukasz osoby, która ogarnie cały marketing? Od strategii, przez treści i SEO, po social media. Napisz.</p>
+        <div class="contact-links">
+          <a class="glass" href="mailto:januszjulianna@gmail.com"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>januszjulianna@gmail.com</a>
+          <a class="glass" href="https://www.linkedin.com/in/julianna-janusz/"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 10v7"></path><path d="M8 7v.01"></path><path d="M12 17v-4a2 2 0 0 1 4 0v4"></path><path d="M12 10v7"></path></svg>linkedin.com/in/julianna-janusz</a>
+        </div>
+      </div>
+      <div class="door reveal">
+        <img src="assets/img/drzwi.jpg" alt="Julianna przy zielonych drzwiach kamienicy" width="1000" height="1333">
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Stopka">
+      <a href="#start">portfolio</a>
+      <a href="#o-mnie">o mnie</a>
+      <a href="#prace">prace</a>
+      <a href="#kontakt">kontakt</a>
+    </nav>
+    <p>Zdjęcie z ogrodu: Michalina Wodarska · © 2026 Julianna Janusz</p>
+  </div>
+</footer>
+
+</div>
+<!--SITE-END-->
+</body>
+</html>
