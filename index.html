@@ -27,13 +27,13 @@
 }
 body{margin:0}
 html{scroll-behavior:smooth}
-.site{background:var(--cream);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.site{background:var(--cream);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
 .site *,.site *::before,.site *::after{box-sizing:border-box}
 .site img{max-width:100%;height:auto;display:block}
 .site a{color:inherit}
 .site :focus-visible{outline:3px solid var(--rose-ink);outline-offset:3px;border-radius:6px}
 .wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding-inline:clamp(16px,5vw,64px)}
-.band{position:relative;padding-block:clamp(72px,10vw,128px);overflow:hidden}
+.band{position:relative;padding-block:clamp(72px,10vw,128px);overflow:clip}
 .band.cream{background:var(--cream);color:var(--ink)}
 .band.olive{background:var(--olive);color:var(--cream)}
 .band.deep{background:var(--olive-deep);color:var(--cream)}
@@ -81,17 +81,24 @@ html{scroll-behavior:smooth}
 .dock-nav a:hover{background:rgba(255,255,255,.7)}
 
 /* o mnie */
-.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,96px);align-items:center}
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,96px);align-items:start}
+.about-side{position:sticky;top:clamp(70px,9vh,110px);display:flex;flex-direction:column;align-items:center}
+.insta{position:relative;z-index:3;width:min(230px,58%);margin:-35% auto 0;padding:8px 8px 10px;background:#fff;border-radius:14px;box-shadow:0 18px 36px rgba(46,51,36,.22);rotate:5deg;transition:rotate .45s,scale .45s}
+.insta:hover{rotate:0deg;scale:1.05}
+.insta img{border-radius:8px}
+.insta figcaption{margin-top:6px;font-family:var(--font-script);font-size:26px;line-height:1;text-align:center;color:var(--rose-ink)}
 .photo-card{position:relative;max-width:400px;width:100%;justify-self:center;margin-top:40px}
 .photo-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 42%;border-radius:10px;box-shadow:0 24px 50px rgba(46,51,36,.2)}
 .hello{position:absolute;right:-34px;top:-70px;z-index:2;transform:rotate(-8deg)}
-.shine{margin:0;font-family:var(--font-script);font-size:clamp(70px,8vw,104px);line-height:1;padding:0 .1em .1em;background:linear-gradient(110deg,#B8627A 0%,#B8627A 38%,#FFF7F9 50%,#B8627A 62%,#B8627A 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 3.4s linear infinite;filter:drop-shadow(0 3px 8px rgba(184,98,122,.35))}
+.shine{margin:0;font-family:var(--font-script);font-size:clamp(70px,8vw,104px);line-height:1;padding:0 .1em .1em;background:linear-gradient(110deg,#1d1f1a 0%,#1d1f1a 38%,#8f927f 45%,#FFFFFF 50%,#8f927f 55%,#1d1f1a 62%,#1d1f1a 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 3.4s linear infinite;filter:drop-shadow(0 3px 8px rgba(29,31,26,.25))}
 .spark{position:absolute;width:22px;height:22px;animation:twinkle 2.2s ease-in-out infinite}
 .spark.s1{left:-14px;top:6px}
 .spark.s2{right:-6px;top:-10px;width:16px;height:16px;animation-delay:.7s}
 .spark.s3{right:28px;bottom:-4px;width:12px;height:12px;animation-delay:1.3s}
 .h-hello{margin:0 0 22px;font-family:var(--font-display);font-weight:400;font-size:clamp(44px,6vw,76px);line-height:.95;letter-spacing:-.045em;text-wrap:balance}
 .cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:36px;margin-top:clamp(56px,6vw,80px);padding-top:28px;border-top:1.5px solid var(--ink)}
+.list li{transition:transform .25s}
+.list li:hover{transform:translateX(5px)}
 .list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15.5px;line-height:1.45}
 .list b{font-weight:700}
 .list .sub{display:block;color:var(--muted)}
@@ -112,9 +119,10 @@ html{scroll-behavior:smooth}
 .center{text-align:center}
 .center .script{margin-left:2.4em}
 .group-label{margin:48px 0 20px;text-align:center}
-.tiles{display:flex;flex-wrap:wrap;justify-content:center;gap:28px 20px;list-style:none;margin:0;padding:0}
-.brand{width:128px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;font-size:14.5px;line-height:1.3}
-.tile{position:relative;width:128px;height:128px;border-radius:32px;display:grid;place-items:center;padding:14px;overflow:hidden;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 30px rgba(0,0,0,.22),inset 0 1px 0 #fff;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.tiles.first{margin-top:clamp(56px,7vw,88px)}
+.tiles{display:flex;flex-wrap:wrap;justify-content:center;gap:28px 16px;list-style:none;margin:0;padding:0}
+.brand{width:116px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;font-size:14.5px;line-height:1.3}
+.tile{position:relative;width:116px;height:116px;border-radius:30px;display:grid;place-items:center;padding:14px;overflow:hidden;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.9);box-shadow:0 14px 30px rgba(0,0,0,.22),inset 0 1px 0 #fff;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
 .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,0) 45%);pointer-events:none}
 .brand:hover .tile{transform:translateY(-7px) rotate(-4deg);box-shadow:0 22px 38px rgba(0,0,0,.28)}
 .tile img{max-width:100%;max-height:100%;object-fit:contain}
@@ -126,10 +134,11 @@ html{scroll-behavior:smooth}
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,5vw,72px);align-items:center;margin-top:44px}
 .stickers{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 .stk{display:flex;flex-direction:column;margin:0;padding:12px 18px;border-radius:20px;transition:transform .3s}
-.stk:hover{transform:translateY(-4px)}
 .stk b{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,3vw,34px);line-height:1;white-space:nowrap}
 .stk span{font-size:13.5px;line-height:1.35}
 .stk.rose{background:rgba(235,169,181,.75)}
+.stickers .stk{animation:floaty 4.2s ease-in-out infinite}
+.stickers .stk:nth-child(2){animation-duration:5.2s;animation-delay:-2.1s}
 .bars{margin-top:20px;padding:18px 20px;border-radius:20px;display:grid;gap:10px;max-width:480px}
 .bars-h{margin:0;font-size:14px;font-weight:600}
 .bar-row{display:grid;grid-template-columns:86px 1fr 62px;align-items:center;gap:12px;font-size:13.5px;font-variant-numeric:tabular-nums}
@@ -169,10 +178,6 @@ a.res-title:hover{color:var(--ink)}
 .sitelink a{font-size:15px;line-height:1.35;font-weight:600;color:var(--wine);text-underline-offset:3px}
 .sitelink span{font-size:13px;color:var(--muted)}
 
-.board{margin:0;padding:12px 12px 14px;border-radius:14px;transform:rotate(-2.5deg);transition:transform .45s cubic-bezier(.2,.8,.2,1);max-width:480px;justify-self:center}
-.board:hover{transform:rotate(0) scale(1.02)}
-.board img{border-radius:6px}
-.board figcaption{margin-top:8px;font-family:var(--font-script);font-size:32px;line-height:1.1;text-align:center;color:var(--cream)}
 .gcard{padding:20px;border-radius:22px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .gcard:hover{transform:translateY(-6px)}
 .gcard h3{margin:0 0 8px;font-family:var(--font-display);font-weight:400;font-size:14px;line-height:1.35;letter-spacing:.04em}
@@ -189,39 +194,154 @@ a.res-title:hover{color:var(--ink)}
 .partners ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
 .partners li{padding:7px 14px;border-radius:999px;border:1px solid rgba(252,242,196,.35);background:rgba(252,242,196,.06);font-size:14.5px;transition:background .25s,border-color .25s}
 .partners li:hover{background:rgba(235,169,181,.25);border-color:var(--rose)}
-.cards4{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:18px;margin-top:clamp(40px,5vw,56px)}
 
 /* przed i po */
-.ba{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:clamp(20px,3vw,40px);align-items:end;margin-top:clamp(44px,5vw,64px)}
-.ba-item{margin:0;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
-.ba-item .browser{width:100%}
-.ba-tag{padding:6px 16px;border-radius:999px;background:var(--ink);color:var(--cream);font-family:var(--font-display);font-size:13px;letter-spacing:.04em}
-.ba-tag.rose{background:var(--rose);color:var(--ink)}
-.ba .shot{--shot-h:clamp(280px,30vw,420px)}
-.browser.old .shot img{filter:saturate(.7)}
 .vid{display:block;width:100%;height:auto;background:#F5F5F7}
 .builds{margin-top:24px;padding:16px 24px;border-radius:24px}
 .acc{display:flex;flex-direction:column;gap:10px;margin-top:16px}
-.acc details{border-radius:18px;padding:0 20px}
 .acc summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:52px;cursor:pointer;list-style:none;font-family:var(--font-display);font-size:15px;letter-spacing:.02em}
 .acc summary::-webkit-details-marker{display:none}
-.acc summary::after{content:"+";flex-shrink:0;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--rose);color:var(--ink);font-size:20px;line-height:1;transition:transform .3s}
-.acc details[open] summary::after{transform:rotate(45deg)}
-.acc details p{margin:0;padding:0 0 18px;font-size:15.5px;line-height:1.6;animation:accIn .35s ease both}
+.acc details{border-radius:18px;padding:0 20px;transition:background .45s,transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.acc details:hover{transform:translateX(6px)}
+.olive .acc details[open]{background:linear-gradient(135deg,rgba(235,169,181,.34),rgba(235,169,181,.08));box-shadow:0 16px 34px rgba(0,0,0,.2),inset 0 1px 0 rgba(252,242,196,.35)}
+.acc summary::after{content:"+";flex-shrink:0;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--rose);color:var(--ink);font-size:20px;line-height:1;transition:transform .45s cubic-bezier(.2,.8,.2,1),background .45s}
+.acc details[open] summary::after{transform:rotate(135deg);background:var(--cream)}
+.acc details::details-content{block-size:0;overflow:clip;transition:block-size .5s cubic-bezier(.2,.8,.2,1),content-visibility .5s allow-discrete}
+.acc details[open]::details-content{block-size:auto}
+.acc details p{margin:0;padding:0 0 18px;font-size:15.5px;line-height:1.6}
+.acc details[open] p{animation:accIn .55s cubic-bezier(.2,.8,.2,1) both}
 .rotator{display:block;height:1.15em;overflow:hidden;font-family:var(--font-display);font-size:clamp(30px,3.6vw,46px);line-height:1.15;letter-spacing:-.03em;color:var(--rose)}
-.rot-list{display:block;animation:rot 11s cubic-bezier(.7,0,.3,1) infinite}
+.rot-list{display:block;animation:rot 13s cubic-bezier(.7,0,.3,1) infinite}
 .rot-list span{display:block;height:1.15em;white-space:nowrap}
 /* galeria */
-.gallery{columns:3 240px;column-gap:32px;margin-top:56px}
-.gal{break-inside:avoid;margin:0 0 32px;background:#fff;padding:10px;box-shadow:0 18px 36px rgba(0,0,0,.3);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
-.gal img{width:100%}
-.gal.t1{transform:rotate(-2.5deg)}
-.gal.t2{transform:rotate(2deg)}
-.gal.t3{transform:rotate(-1.2deg)}
-.gal.t4{transform:rotate(2.6deg)}
-.gal:hover{transform:rotate(0) scale(1.03)}
 
+/* kursor */
+@media (pointer:fine){
+  .site,.site *{cursor:url(assets/cursor/kursor.png) 9 7,auto;cursor:image-set(url(assets/cursor/kursor.png) 1x,url(assets/cursor/kursor@2x.png) 2x) 9 7,auto}
+  .site a,.site a *,.site button,.site summary,.site summary *{cursor:url(assets/cursor/kursor-link.png) 9 7,pointer;cursor:image-set(url(assets/cursor/kursor-link.png) 1x,url(assets/cursor/kursor-link@2x.png) 2x) 9 7,pointer}
+}
+.site{interpolate-size:allow-keywords}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* przejscia */
+.progress{position:fixed;top:0;left:0;right:0;z-index:70;height:3px;background:linear-gradient(90deg,var(--rose),var(--rose-ink));transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+.wave{position:absolute;left:0;right:0;z-index:2;height:40px;overflow:hidden;pointer-events:none}
+.wave.top{top:-1px}
+.wave.bottom{bottom:-1px}
+.wave svg{display:block;width:200%;height:100%;animation:waveSlide 60s linear infinite}
+.wave.alt svg{animation-duration:75s;animation-direction:reverse}
+.wave path{fill:currentColor}
+.w-cream{color:var(--cream)}
+.w-pink{color:var(--pink-band)}
+.w-olive{color:var(--olive)}
+.band.cream,.band.pink{--h2c:var(--ink)}
+.band.olive,.band.deep{--h2c:var(--cream)}
+/* hero: zmieniajace sie hasla */
+.words{display:inline-grid}
+.words > span{grid-area:1/1;white-space:nowrap;opacity:0;animation:wordSwap 9s cubic-bezier(.2,.8,.2,1) infinite}
+.words > span:nth-child(2){animation-delay:3s}
+.words > span:nth-child(3){animation-delay:6s}
+/* strategia: cykl */
+.cycle{position:relative;width:min(100%,500px);aspect-ratio:1;justify-self:center}
+.cycle::before{content:"";position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle,rgba(235,169,181,.22),rgba(235,169,181,0) 68%)}
+.cycle-ring{position:absolute;inset:14%;border-radius:50%;border:2px dashed rgba(252,242,196,.35);animation:spin 60s linear infinite}
+.cycle-orbit{position:absolute;inset:14%;border-radius:50%;animation:spin 10s linear infinite}
+.comet{position:absolute;left:50%;top:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 6px rgba(235,169,181,.25),0 0 26px 8px rgba(235,169,181,.65)}
+.cycle-core{position:absolute;inset:34%;display:grid;place-items:center;border-radius:50%;text-align:center;font-family:var(--font-display);font-size:clamp(17px,2vw,24px);line-height:1.05;letter-spacing:-.02em;color:var(--cream);background:rgba(252,242,196,.12);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(252,242,196,.35);box-shadow:inset 0 1px 0 rgba(252,242,196,.4),0 0 60px rgba(235,169,181,.28);animation:corePulse 5s ease-in-out infinite}
+.node{position:absolute;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 16px;border-radius:18px;transform:translate(-50%,-50%);background:rgba(62,69,48,.55);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(252,242,196,.3);color:var(--cream);font-size:14.5px;line-height:1.2;text-align:center;white-space:nowrap;animation:nodeOn 10s ease-in-out infinite}
+.node i{font-style:normal;font-family:var(--font-display);font-size:11px;letter-spacing:.06em;opacity:.75}
+.n1{left:50%;top:14%;animation-delay:-.6s}
+.n2{left:84.2%;top:38.9%;animation-delay:1.4s}
+.n3{left:71.2%;top:79.1%;animation-delay:3.4s}
+.n4{left:28.8%;top:79.1%;animation-delay:5.4s}
+.n5{left:15.8%;top:38.9%;animation-delay:7.4s}
+/* partnerstwa: przesuwane boxy */
+.pmarq{margin-top:clamp(40px,5vw,56px);padding-block:12px;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+.ptrack{display:flex;gap:18px;width:max-content;padding-right:18px;animation:slideRight3 34s linear infinite}
+.ptrack:hover{animation-play-state:paused}
+.ptrack .gcard{width:300px;flex-shrink:0}
+/* kontakt: brokatowa strzalka */
+.li-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+.glitter{position:relative;display:inline-flex;align-items:flex-end;gap:0;margin-left:4px}
+.g-arrow{width:130px;height:auto;overflow:visible;filter:drop-shadow(0 0 6px rgba(235,169,181,.75))}
+.g-line{fill:none;stroke:rgba(235,169,181,.4);stroke-width:1.5}
+.g-trail{fill:none;stroke-width:4.5;stroke-linecap:round;stroke-dasharray:0 9;animation:glitterFlow 1.2s linear infinite}
+.g-head{fill:none;stroke:#F8D2DA;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.g-text{margin:0 0 -4px -10px;font-family:var(--font-script);font-size:42px;line-height:1;white-space:nowrap;background:linear-gradient(110deg,#EBA9B5 0%,#EBA9B5 36%,#FFF7F9 48%,#F2C46B 54%,#EBA9B5 66%,#EBA9B5 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 2.8s linear infinite}
+.glitter .spark.s1{left:22px;top:-6px;right:auto}
+.glitter .spark.s2{left:70px;top:44px;right:auto;bottom:auto;width:14px;height:14px}
+.glitter .spark.s3{right:-14px;top:-4px;bottom:auto;width:16px;height:16px}
+/* laptopy: blog przed i po */
+.ba{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,3vw,44px);align-items:end;margin:clamp(56px,6vw,80px) clamp(-90px,-5vw,0px) 0;padding:0 0 30px}
+.ba-label{display:block;margin:0 0 14px;text-align:center;font-family:var(--font-script);font-size:clamp(36px,3.4vw,48px);line-height:1;color:var(--ink)}
+.ba-label.po{color:var(--rose-ink)}
+.macwin{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 26px 60px rgba(46,51,36,.24),0 0 0 1px rgba(0,0,0,.1)}
+.macwin-bar{display:flex;align-items:center;gap:12px;height:38px;padding:0 14px;background:linear-gradient(180deg,#f6f6f6,#e7e7e7);border-bottom:1px solid #d2d2d2}
+.tl{display:flex;gap:8px;width:52px;flex-shrink:0}
+.tl i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.18)}
+.tl i:nth-child(1){background:#FF5F57}
+.tl i:nth-child(2){background:#FEBC2E}
+.tl i:nth-child(3){background:#28C840}
+.tl-sp{width:52px;flex-shrink:0}
+.macwin-url{flex:1;display:flex;justify-content:center;min-width:0}
+.addr{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:min(100%,280px);height:24px;border-radius:7px;background:rgba(0,0,0,.065);color:#555;font:500 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif}
+.mac-screen{--shot-h:clamp(240px,27vw,400px);height:var(--shot-h);overflow:hidden;background:#fff}
+.mac-screen.old img{filter:saturate(.75)}
+.mac-screen img{animation:blogAuto 30s ease-in-out infinite;animation-play-state:paused}
+.ba.play .mac-screen img{animation-play-state:running}
+.ba-item{position:relative;margin:0}
+/* social: telefon i karty postow */
+.feed{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(32px,5vw,64px);align-items:start;margin-top:56px}
+.feed-cards{columns:3 190px;column-gap:24px}
+.igc{break-inside:avoid;margin:0 0 26px;border-radius:14px;overflow:hidden;background:#fff;color:#1d1f1a;box-shadow:0 18px 36px rgba(0,0,0,.28);transition:rotate .45s cubic-bezier(.2,.8,.2,1),scale .45s cubic-bezier(.2,.8,.2,1)}
+.igc.t1{rotate:-3deg}
+.igc.t2{rotate:2.5deg}
+.igc.t3{rotate:-1.5deg}
+.igc.t4{rotate:3deg}
+.igc:hover{rotate:0deg;scale:1.04}
+.igc-head{display:flex;align-items:center;gap:8px;padding:9px 11px;font:600 12.5px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif}
+.igc-av{flex-shrink:0;width:24px;height:24px !important;border-radius:50%;background:#fff;border:1px solid rgba(0,0,0,.12)}
+.igc-av.cover{object-fit:cover}
+.igc-av.contain{object-fit:contain;padding:2px}
+.igc-img{width:100%;display:block}
+.igc-foot{display:flex;align-items:center;gap:10px;padding:9px 11px 11px}
+.igc-foot svg{width:20px;height:20px;fill:none;stroke:#1d1f1a;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.igc-foot .liked{fill:#E0466B;stroke:#E0466B}
+.igc-sp{flex:1}
+.phone-mock{position:sticky;top:110px;width:300px;padding:11px;border-radius:48px;background:linear-gradient(160deg,#2d3028,#121410);box-shadow:0 34px 70px rgba(0,0,0,.4),inset 0 0 0 2px #4b4e45;rotate:5deg;animation:lpFloat 7s ease-in-out infinite}
+.pm-screen{border-radius:38px;overflow:hidden;background:#fff;color:#1d1f1a;font:13px/1.35 system-ui,-apple-system,"Segoe UI",sans-serif}
+.pm-status{position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 22px 8px;font-weight:700;font-size:13px}
+.pm-island{position:absolute;left:50%;top:9px;width:86px;height:24px;margin-left:-43px;border-radius:20px;background:#111}
+.pm-sys{display:flex;align-items:flex-end;gap:2px}
+.pm-sys i{display:block;width:3px;background:#1d1f1a;border-radius:1px}
+.pm-sys i:nth-child(1){height:5px}
+.pm-sys i:nth-child(2){height:7px}
+.pm-sys i:nth-child(3){height:9px}
+.pm-sys b{display:block;width:20px;height:10px;margin-left:5px;border-radius:3px;border:1.5px solid #1d1f1a;box-shadow:inset 12px 0 0 #1d1f1a}
+.pm-head{display:flex;align-items:center;gap:8px;padding:10px 14px;font-weight:600;border-bottom:1px solid #eee}
+.pm-dots{margin-left:auto;letter-spacing:1px;font-size:10px}
+.pm-img{width:100%;display:block}
+.pm-foot{padding:10px 14px 4px}
+.pm-cap{margin:0;padding:0 14px 12px;font-size:12.5px}
+.pm-nav{display:flex;justify-content:space-around;padding:12px 10px 18px;border-top:1px solid #eee}
+.pm-nav i{display:block;width:18px;height:18px;border:2px solid #1d1f1a;border-radius:5px}
+.pm-nav i:nth-child(2){border-radius:50%}
+.pm-nav i:nth-child(5){border-radius:50%;background:#EBA9B5;border-color:#EBA9B5}
+/* o mnie: zaznaczenia */
+.mark{position:relative;white-space:nowrap}
+.mark::before,.mark::after{content:"";position:absolute;z-index:-1;pointer-events:none}
+.hl-yellow::before{left:-4px;right:-4px;top:.18em;bottom:.02em;border-radius:3px 9px 4px 10px;background:rgba(200,230,166,.85);transform:rotate(-1deg) skewX(-8deg)}
+.hl-pink::before{left:-4px;right:-4px;top:.18em;bottom:.02em;border-radius:9px 3px 10px 4px;background:rgba(242,176,192,.75);transform:rotate(1deg) skewX(-8deg)}
+.circ-green::before{left:-.4em;right:-.4em;top:-.22em;bottom:-.24em;border:2.5px solid #8DB46A;border-radius:50%;transform:rotate(-2.5deg)}
+.circ-pink::before{left:-.45em;right:-.45em;top:-.24em;bottom:-.26em;border:2.5px solid #E58FA4;border-radius:50%;transform:rotate(1.5deg)}
+.circ-pink{font-weight:600}
+.ul-green::before{left:-2px;right:-2px;bottom:-.14em;height:.2em;border-radius:40% 60% 50% 45%;background:#9FC27C;transform:rotate(-.8deg)}
+.ul-pink::after{left:-2px;right:-2px;bottom:-.2em;height:.13em;border-radius:50%;background:#E58FA4;box-shadow:0 .22em 0 #E58FA4;transform:rotate(.6deg)}
+.mark-arrow{display:inline-block;width:1.7em;height:1em;margin-right:.25em;vertical-align:-.1em;overflow:visible}
+.mark-arrow path{fill:none;stroke:#C0607A;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 /* social */
+.platforms{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:20px 0 0;padding:0}
+.platforms li{padding:8px 18px;border-radius:999px;background:rgba(252,242,196,.1);border:1px solid rgba(252,242,196,.35);font-family:var(--font-display);font-size:13px;letter-spacing:.03em;transition:background .25s,color .25s,transform .25s}
+.platforms li:hover{background:var(--rose);color:var(--ink);transform:translateY(-3px)}
 .li-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:40px;padding:16px 20px;border-radius:24px}
 .avatar{width:58px;height:58px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--rose)}
 .avatar img{width:100%;height:100% !important;object-fit:cover;object-position:50% 30%}
@@ -264,10 +384,20 @@ a.res-title:hover{color:var(--ink)}
 
 @media (max-width:900px){
   .about,.split,.contact,.ba{grid-template-columns:minmax(0,1fr)}
-  .split .board{order:2}
+  .about-side{position:static}
+  .ba{gap:40px;margin-inline:0;padding:0 0 30px}
+  .feed{grid-template-columns:minmax(0,1fr)}
+  .phone-mock{position:relative;top:auto;order:-1;justify-self:center;rotate:0deg}
   .hello{right:-8px}
 }
 @media (max-width:600px){
+  .feed-cards{columns:2 140px;column-gap:16px}
+  .phone-mock{width:min(300px,86vw)}
+  .mark{white-space:normal}
+  .node{padding:7px 9px;font-size:12px;white-space:normal;max-width:112px}
+  .node i{font-size:10px}
+  .g-arrow{width:96px}
+  .g-text{font-size:34px}
   .frame{height:170px !important}
   .dock-nav a{padding:0 11px;font-size:12px}
   .hero-under{justify-content:center}
@@ -285,8 +415,27 @@ a.res-title:hover{color:var(--ink)}
 @keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes caret{50%{opacity:0}}
 @keyframes sweep{0%,30%{left:-60%}70%,100%{left:120%}}
-@keyframes rot{0%,16%{transform:translateY(0)}20%,36%{transform:translateY(-1.15em)}40%,56%{transform:translateY(-2.3em)}60%,76%{transform:translateY(-3.45em)}80%,96%{transform:translateY(-4.6em)}100%{transform:translateY(-5.75em)}}
-@keyframes accIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes rot{0%,13%{transform:translateY(0)}16.67%,29.67%{transform:translateY(-1.15em)}33.33%,46.33%{transform:translateY(-2.3em)}50%,63%{transform:translateY(-3.45em)}66.67%,79.67%{transform:translateY(-4.6em)}83.33%,96.33%{transform:translateY(-5.75em)}100%{transform:translateY(-6.9em)}}
+@keyframes accIn{from{opacity:0;transform:translateY(-10px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes waveSlide{to{transform:translateX(-50%)}}
+@keyframes wordSwap{0%{opacity:0;transform:translateY(.7em);filter:blur(6px)}6%,30%{opacity:1;transform:none;filter:none}36%,100%{opacity:0;transform:translateY(-.7em);filter:blur(6px)}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(1.5deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes corePulse{0%,100%{box-shadow:inset 0 1px 0 rgba(252,242,196,.4),0 0 50px rgba(235,169,181,.2)}50%{box-shadow:inset 0 1px 0 rgba(252,242,196,.4),0 0 80px rgba(235,169,181,.45)}}
+@keyframes nodeOn{0%,16%{background:var(--rose);color:var(--ink);border-color:var(--rose);transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 30px rgba(235,169,181,.55)}24%,100%{transform:translate(-50%,-50%) scale(1)}}
+@keyframes slideRight3{from{transform:translateX(-33.3333%)}to{transform:translateX(0)}}
+@keyframes glitterFlow{to{stroke-dashoffset:-18}}
+@keyframes progressGrow{to{transform:scaleX(1)}}
+@keyframes h2In{from{opacity:0;transform:translateX(-10vw)}to{opacity:1;transform:none}}
+@keyframes typeW{from{max-width:0}to{max-width:13ch}}
+@keyframes caretBlink{50%{border-right-color:transparent}}
+@keyframes inkIn{to{background-size:100% 100%,100% 100%}}
+@keyframes liIn{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+@keyframes lpFloat{0%,100%{translate:0 0}50%{translate:0 -14px}}
+@keyframes shadowPulse{0%,100%{opacity:1;transform:scaleX(1)}50%{opacity:.6;transform:scaleX(.88)}}
+@keyframes markDraw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes arrowDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes blogAuto{0%,6%{transform:translateY(0)}80%,92%{transform:translateY(calc(-100% + var(--shot-h)))}100%{transform:translateY(0)}}
 @keyframes rise{from{transform:translateY(56px)}to{transform:none}}
 @keyframes dockIn{from{opacity:0;visibility:hidden;transform:translate(-50%,30px)}to{opacity:1;visibility:visible;transform:translate(-50%,0)}}
 
@@ -294,11 +443,31 @@ a.res-title:hover{color:var(--ink)}
   @media (prefers-reduced-motion: no-preference){
     .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
     .bar-fill{animation:barGrow linear both;animation-timeline:view();animation-range:entry 10% entry 100%}
+    .h2{animation:h2In linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+    .write{view-timeline-name:--write}
+    .h-hello .typed{display:inline-block;max-width:13ch;overflow:clip;white-space:nowrap;vertical-align:bottom;padding-right:6px;border-right:4px solid var(--rose-ink);animation:typeW steps(12,end) both,caretBlink 1s steps(1) infinite;animation-timeline:--write,auto;animation-range:cover 3% cover 11%,normal}
+    .write .ink{background-image:linear-gradient(var(--ink),var(--ink)),linear-gradient(rgba(46,51,36,.2),rgba(46,51,36,.2));background-repeat:no-repeat;background-size:0% 100%,100% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:inkIn linear both;animation-timeline:--write}
+    .write .i1{animation-range:cover 6% cover 22%}
+    .write .i2{animation-range:cover 15% cover 32%}
+    .write .i3{animation-range:cover 25% cover 38%}
+    .write .i4{animation-range:cover 32% cover 45%}
+    .write .i5{animation-range:cover 39% cover 56%}
+    .mark::before,.mark::after{animation:markDraw linear both;animation-timeline:--write}
+    .m1::before{animation-range:cover 9% cover 14%}
+    .m2::before{animation-range:cover 18% cover 23%}
+    .m3::before{animation-range:cover 20% cover 26%}
+    .m4::before{animation-range:cover 29% cover 34%}
+    .m5::before,.m5::after{animation-range:cover 35% cover 40%}
+    .m6::before{animation-range:cover 44% cover 48%}
+    .m7::before{animation-range:cover 52% cover 57%}
+    .mark-arrow path{stroke-dasharray:1;animation:arrowDraw linear both;animation-timeline:--write;animation-range:cover 27% cover 31%}
+    .cols2 .list li{animation:liIn linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
   }
 }
 @supports (animation-timeline: scroll()){
   @media (prefers-reduced-motion: no-preference){
     .dock-nav{animation:dockIn linear both;animation-timeline:scroll(root);animation-range:0 420px}
+    .progress{animation:progressGrow linear both;animation-timeline:scroll(root)}
   }
 }
 @media (prefers-reduced-motion: reduce){
@@ -306,6 +475,9 @@ a.res-title:hover{color:var(--ink)}
   html{scroll-behavior:auto}
   .strip{overflow-x:auto}
   .rotator{height:auto}
+  .words > span{opacity:1}
+  .words > span:not(:first-child){display:none}
+  .node,.n1,.n2,.n3,.n4,.n5{transform:translate(-50%,-50%)}
   .rot-list .rot-dup{display:none}
 }
 </style>
@@ -314,6 +486,7 @@ a.res-title:hover{color:var(--ink)}
 <body>
 <!--SITE-START-->
 <div class="site">
+<div class="progress" aria-hidden="true"></div>
 
 <nav class="dock-nav" aria-label="Szybkie menu">
   <a href="#start">portfolio</a>
@@ -335,11 +508,12 @@ a.res-title:hover{color:var(--ink)}
     <div class="name-wrap">
       <h1 class="hero-name" aria-label="Julianna Janusz"><span class="first" aria-hidden="true"><span class="ch" style="animation-delay: 250ms">j</span><span class="ch" style="animation-delay: 320ms">u</span><span class="ch" style="animation-delay: 390ms">l</span><span class="ch" style="animation-delay: 460ms">i</span><span class="ch" style="animation-delay: 530ms">a</span><span class="ch" style="animation-delay: 600ms">n</span><span class="ch" style="animation-delay: 670ms">n</span><span class="ch" style="animation-delay: 740ms">a</span></span></h1>
       <div class="hero-under">
-        <p class="hero-sub">content marketing • seo • branding</p>
+        <p class="hero-sub"><span class="sr-only">marketing, copywriting, branding, seo, ai, design, social media, content, e-mail marketing</span><span class="words" aria-hidden="true"><span>marketing • copywriting • branding</span><span>seo • ai • design</span><span>social media • content • e-mail marketing</span></span></p>
         <span class="hero-last" aria-hidden="true">janusz</span>
       </div>
     </div>
   </div>
+  <div class="wave bottom w-cream" aria-hidden="true"><svg viewBox="0 0 2400 40" preserveAspectRatio="none"><path d="M0 40 H2400 V20.0 Q2325 7 2250 20 Q2175 33 2100 20 Q2025 7 1950 20 Q1875 33 1800 20 Q1725 7 1650 20 Q1575 33 1500 20 Q1425 7 1350 20 Q1275 33 1200 20 Q1125 7 1050 20 Q975 33 900 20 Q825 7 750 20 Q675 33 600 20 Q525 7 450 20 Q375 33 300 20 Q225 7 150 20 Q75 33 0 20 Z"></path></svg></div>
   <div class="hero-links">
     <a href="https://www.linkedin.com/in/julianna-janusz/"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 10v7"></path><path d="M8 7v.01"></path><path d="M12 17v-4a2 2 0 0 1 4 0v4"></path><path d="M12 10v7"></path></svg>LinkedIn</a>
     <a href="mailto:januszjulianna@gmail.com"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>januszjulianna@gmail.com</a>
@@ -354,6 +528,7 @@ a.res-title:hover{color:var(--ink)}
   <span class="orb b" aria-hidden="true"></span>
   <div class="wrap">
     <div class="about">
+      <div class="about-side">
       <div class="photo-card reveal">
         <img src="assets/img/kadr.jpg" alt="Julianna robi palcami ramkę wokół twarzy" width="1000" height="1500">
         <div class="hello" aria-hidden="true">
@@ -363,11 +538,18 @@ a.res-title:hover{color:var(--ink)}
           <svg class="spark s3" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#EBA9B5"></path></svg>
         </div>
       </div>
-      <div class="reveal">
-        <h2 class="h-hello">tu julianna.</h2>
-        <p class="lead">Odkąd pamiętam, piszę. Eseje, wiersze, a czasem też teksty za innych, więc copywriting zaczął się u mnie dużo wcześniej, niż poznałam to słowo :) W szkole i na studiach robiłam projekty graficzne, a po pracy malowałam i rysowałam.</p>
-        <p class="lead">Z pasji zrobiło się hobby: pisałam w redakcji Grajmerek, a potem sama zgłaszałam się do wydawnictw i recenzowałam ich książki. To było moje marzenie i udało się je spełnić.</p>
-        <p class="lead">Dziś łączę strategię, branding i copywriting tak, żeby ludzie zobaczyli, jaką duszę ma firma. Przejmuję inicjatywę wszędzie, gdzie się da.</p>
+        <figure class="insta reveal">
+          <img src="assets/img/insta-2016.jpg" alt="Mój post na Instagramie z czerwca 2016: leżę na asfalcie, cała w kolorowym proszku z Festiwalu Kolorów" width="600" height="832" loading="lazy">
+          <figcaption>tak to się zaczęło, 2016</figcaption>
+        </figure>
+      </div>
+      <div class="reveal write">
+        <h2 class="h-hello"><span class="typed">tu julianna.</span></h2>
+        <p class="lead"><span class="ink i1"><span class="mark hl-yellow m1">Piszę, odkąd pamiętam.</span> Eseje, wiersze, czasem teksty za innych, więc copywriterką byłam na długo, zanim poznałam to słowo :) W szkole i na studiach robiłam projekty graficzne i rysunki, a potem prezentowałam je przed całą salą. Po pracy dalej malowałam i rysowałam. Słowa plus obrazki, więc <span class="mark circ-green m2">marketing i copywriting</span> wyszły mi trochę same z siebie.</span></p>
+        <p class="lead"><span class="ink i2"><span class="mark circ-pink m3">Internet kręcił mnie od zawsze.</span> Instagrama założyłam 10 lat temu, w drodze powrotnej z Festiwalu Kolorów, który przeżywał wtedy swój boom. Potem wciągnął mnie YouTube. Książki pochłaniałam od dziecka (w wieku 11 lat podkradałam mamie thrillery chirurgiczne :P), a granie zaczęłam od Simsów, żeby później cisnąć z braćmi w Tekkena 5. Zawsze lubiłam patrzeć, jak ktoś opowiada historię i buduje cały świat od zera, więc w Wiedźminie przepadłam podwójnie: w książkach i w grach.</span></p>
+        <p class="lead"><span class="ink i3">Dziś robię to samo, tylko z drugiej strony: <span class="mark ul-green m4"><svg class="mark-arrow" viewBox="0 0 46 26" aria-hidden="true"><path pathLength="1" d="M3 4 C 14 2, 30 6, 40 18 M31 18.5 L40.5 19 L39 9.5"></path></svg>podglądam duże marki</span>, rozkładam ich komunikację na części, podkradam inspiracje (tym razem już nie mamie) i zastanawiam się, co sprawia, że zostają w głowie.</span></p>
+        <p class="lead"><span class="ink i4">Z czasem pasja wyszła poza moje cztery ściany. Pisałam dla redakcji Grajmerek, a potem sama zgłaszałam się do wydawnictw i recenzowałam ich książki. <span class="mark hl-yellow ul-pink m5">To było moje marzenie</span> i się udało.</span></p>
+        <p class="lead"><span class="ink i5">W pracy łączę strategię, branding i copywriting. Na starcie jestem (stety albo niestety :P) tą osobą od <span class="mark hl-pink m6">miliona pytań</span>, bo misja marki zawsze musi być na pierwszym miejscu. Dopiero kiedy wiem, jaką duszę ma firma, biorę sprawy w swoje ręce i pokazuję ją ludziom, odpowiadając na pytanie: <span class="mark ul-green m7">dlaczego ktoś miałby wybrać właśnie was?</span></span></p>
       </div>
     </div>
     <div class="cols2">
@@ -387,13 +569,13 @@ a.res-title:hover{color:var(--ink)}
           <li>Adobe Content Creator<span class="sub">Adobe, 07.2026</span></li>
           <li>Canva AI 2.0<span class="sub">Małgorzata Siedlik, 06.2026</span></li>
           <li>Wykorzystanie AI w rozwoju firmy<span class="sub">Google i SGH, 10.2025</span></li>
-          <li>semKRK Workshop Edition<span class="sub">DevaGroup</span></li>
+          <li>semKRK Workshop Edition<span class="sub">DevaGroup, 2025</span></li>
         </ul>
       </div>
     </div>
     <div class="tools glass reveal">
       <h3 class="label center">narzędzia</h3>
-      <ul class="chips"><li>WordPress</li><li>HubSpot</li><li>Google Search Console</li><li>GA4</li><li>Senuto</li><li>Canva</li><li>CapCut</li><li>Adobe</li><li>Lightroom</li><li>Meta</li><li>Miro</li><li>ClickUp</li><li>Asana</li><li>Trello</li><li>Jira</li><li>Notion</li><li>Slack</li><li>Claude</li><li>ChatGPT</li><li>MS Office</li></ul>
+      <ul class="chips"><li>WordPress</li><li>HubSpot</li><li>Google Search Console</li><li>GA4</li><li>Senuto</li><li>Canva</li><li>CapCut</li><li>Adobe</li><li>Lightroom</li><li>Meta</li><li>Miro</li><li>ClickUp</li><li>Asana</li><li>Trello</li><li>Jira</li><li>GitHub</li><li>Notion</li><li>Slack</li><li>Claude</li><li>ChatGPT</li><li>MS Office</li></ul>
       <p class="tools-note">Lista jest otwarta: jak używacie czegoś innego, chętnie się nauczę.</p>
     </div>
   </div>
@@ -401,6 +583,7 @@ a.res-title:hover{color:var(--ink)}
 
 <!-- KADRY -->
 <section class="band pink" aria-labelledby="kadry-h">
+  <div class="wave top w-cream" aria-hidden="true"><svg viewBox="0 0 2400 40" preserveAspectRatio="none"><path d="M0 0 H2400 V20.0 Q2325 7 2250 20 Q2175 33 2100 20 Q2025 7 1950 20 Q1875 33 1800 20 Q1725 7 1650 20 Q1575 33 1500 20 Q1425 7 1350 20 Q1275 33 1200 20 Q1125 7 1050 20 Q975 33 900 20 Q825 7 750 20 Q675 33 600 20 Q525 7 450 20 Q375 33 300 20 Q225 7 150 20 Q75 33 0 20 Z"></path></svg></div>
   <div class="wrap">
     <h2 class="h2" id="kadry-h">kadry <span class="script">z pracy i po godzinach</span></h2>
   </div>
@@ -445,14 +628,14 @@ a.res-title:hover{color:var(--ink)}
 
 <!-- MARKI -->
 <section class="band olive" id="marki">
+  <div class="wave top w-pink alt" aria-hidden="true"><svg viewBox="0 0 2400 40" preserveAspectRatio="none"><path d="M0 0 H2400 V20.0 Q2325 7 2250 20 Q2175 33 2100 20 Q2025 7 1950 20 Q1875 33 1800 20 Q1725 7 1650 20 Q1575 33 1500 20 Q1425 7 1350 20 Q1275 33 1200 20 Q1125 7 1050 20 Q975 33 900 20 Q825 7 750 20 Q675 33 600 20 Q525 7 450 20 Q375 33 300 20 Q225 7 150 20 Q75 33 0 20 Z"></path></svg></div>
   <span class="orb a" aria-hidden="true"></span>
   <span class="orb b" aria-hidden="true"></span>
   <div class="wrap">
     <div class="center reveal">
       <h2 class="h2">marki <span class="script">z którymi pracowałam</span></h2>
     </div>
-    <p class="label group-label">pracowałam dla</p>
-    <ul class="tiles">
+    <ul class="tiles first">
       <li class="brand reveal"><span class="tile"><img src="assets/logos/selly.png" alt="Selly" width="470" height="178"></span>Selly</li>
       <li class="brand reveal"><span class="tile"><img src="assets/logos/kce.png" alt="Krajowe Centrum Edukacyjne" width="480" height="480"></span>Krajowe Centrum Edukacyjne</li>
       <li class="brand reveal"><span class="tile"><img src="assets/logos/takaoto.png" alt="takaoto" width="480" height="96"></span>takaoto</li>
@@ -460,6 +643,7 @@ a.res-title:hover{color:var(--ink)}
       <li class="brand reveal"><span class="tile"><img src="assets/logos/kociolek.png" alt="Popkulturowy Kociołek" width="480" height="171"></span>Popkulturowy Kociołek</li>
       <li class="brand reveal"><span class="tile"><img src="assets/logos/ipcc.png" alt="Instytut Przeciwdziałania Chorobom Cywilizacyjnym" width="428" height="87"></span>IPCC</li>
       <li class="brand reveal"><span class="tile"><img src="assets/logos/ikds.png" alt="Instytut Kreatywnych Działań Społecznych" width="295" height="294"></span>IKDS</li>
+      <li class="brand reveal"><span class="tile"><img src="assets/logos/klb.png" alt="KLB Akademia Szkoleń" width="720" height="310"></span>KLB Akademia Szkoleń</li>
     </ul>
     <p class="label group-label">wydawnictwa, dla których recenzowałam</p>
     <ul class="tiles">
@@ -475,6 +659,7 @@ a.res-title:hover{color:var(--ink)}
 
 <!-- SEO I TEKSTY -->
 <section class="band cream" aria-labelledby="seo-h">
+  <div class="wave top w-olive" aria-hidden="true"><svg viewBox="0 0 2400 40" preserveAspectRatio="none"><path d="M0 0 H2400 V20.0 Q2325 7 2250 20 Q2175 33 2100 20 Q2025 7 1950 20 Q1875 33 1800 20 Q1725 7 1650 20 Q1575 33 1500 20 Q1425 7 1350 20 Q1275 33 1200 20 Q1125 7 1050 20 Q975 33 900 20 Q825 7 750 20 Q675 33 600 20 Q525 7 450 20 Q375 33 300 20 Q225 7 150 20 Q75 33 0 20 Z"></path></svg></div>
   <span class="orb a" aria-hidden="true"></span>
   <span class="orb c" aria-hidden="true"></span>
   <div class="wrap">
@@ -482,7 +667,7 @@ a.res-title:hover{color:var(--ink)}
     <div class="split">
       <div class="reveal">
         <p class="lead">Piszę dla różnych firm, niezależnie od branży. Na oko licząc, mam na koncie ponad 300 tekstów blogowych, więc można powiedzieć, że zjadłam na tym zęby (a może bardziej palce na klawiaturze).</p>
-        <p class="lead">Tam, gdzie liczy się Google, dobieram tematy i frazy, robię research i pilnuję E-E-A-T i linkowania.</p>
+        <p class="lead">Tam, gdzie liczy się Google i LLM-y, dobieram tematy i frazy, robię research i pilnuję E-E-A-T i linkowania. Mimo wejścia AI dalej łączę dwie rzeczy: piszę tak, żeby boty dobrze mnie zrozumiały, a ludzie chcieli doczytać do końca.</p>
       </div>
       <div class="reveal">
         <p class="label">przykład: blog Selly, rok do roku</p>
@@ -501,17 +686,17 @@ a.res-title:hover{color:var(--ink)}
 
     <div class="ba reveal">
       <figure class="ba-item">
-        <span class="ba-tag">przed</span>
-        <div class="browser old">
-          <div class="browser-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>selly.pl/blog</span></div>
-          <div class="shot"><img src="assets/img/blog-przed.jpg" alt="Stary blog Selly: dwie kolumny wpisów z pomarańczowymi grafikami i lista kategorii z boku" width="1000" height="1435"></div>
+        <span class="ba-label">przed</span>
+        <div class="macwin">
+          <div class="macwin-bar" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="macwin-url"><span class="addr"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>selly.pl/blog</span></span><span class="tl-sp"></span></div>
+          <div class="mac-screen shot old"><img src="assets/img/blog-przed.jpg" alt="Stary blog Selly: dwie kolumny wpisów z pomarańczowymi grafikami i lista kategorii z boku" width="1000" height="1435"></div>
         </div>
       </figure>
       <figure class="ba-item">
-        <span class="ba-tag rose">po</span>
-        <div class="browser">
-          <div class="browser-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>selly.pl/blog</span></div>
-          <div class="shot"><img src="assets/img/blog-nowy.jpg" alt="Nowy blog Selly: wyróżniony wpis, kategorie jako przyciski i najnowsze wpisy" width="1000" height="1470"></div>
+        <span class="ba-label po">po</span>
+        <div class="macwin">
+          <div class="macwin-bar" aria-hidden="true"><span class="tl"><i></i><i></i><i></i></span><span class="macwin-url"><span class="addr"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>selly.pl/blog</span></span><span class="tl-sp"></span></div>
+          <div class="mac-screen shot"><img src="assets/img/blog-nowy.jpg" alt="Nowy blog Selly: wyróżniony wpis, kategorie jako przyciski i najnowsze wpisy" width="1000" height="1470"></div>
         </div>
       </figure>
     </div>
@@ -557,7 +742,7 @@ a.res-title:hover{color:var(--ink)}
         <div class="res">
           <div class="res-site"><span class="fav"><img src="assets/logos/kociolek-mark.png" alt="" width="160" height="160"></span><span><span class="res-name">Popkulturowy Kociołek</span><span class="res-url">popkulturowykociolek.pl</span></span></div>
           <a class="res-title" href="https://popkulturowykociolek.pl/diuna-recenzja-ksiazki/">Diuna - recenzja książki</a>
-          <p class="res-desc">Jedna z moich recenzji. Piszę w tekście i wideo, we współpracy z wydawnictwami Uroboros, Young, Zysk i S-ka i Drageus.</p>
+          <p class="res-desc">Pisałam recenzje i tworzyłam wideo na TikToka, we współpracy z wydawnictwami Uroboros, Young, Zysk i S-ka i Drageus.</p>
           <span class="res-tag">recenzja</span>
         </div>
       </div>
@@ -567,23 +752,30 @@ a.res-title:hover{color:var(--ink)}
 
 <!-- STRATEGIA -->
 <section class="band olive" aria-labelledby="strategia-h">
+  <div class="wave top w-cream alt" aria-hidden="true"><svg viewBox="0 0 2400 40" preserveAspectRatio="none"><path d="M0 0 H2400 V20.0 Q2325 7 2250 20 Q2175 33 2100 20 Q2025 7 1950 20 Q1875 33 1800 20 Q1725 7 1650 20 Q1575 33 1500 20 Q1425 7 1350 20 Q1275 33 1200 20 Q1125 7 1050 20 Q975 33 900 20 Q825 7 750 20 Q675 33 600 20 Q525 7 450 20 Q375 33 300 20 Q225 7 150 20 Q75 33 0 20 Z"></path></svg></div>
   <span class="orb a" aria-hidden="true"></span>
   <span class="orb b" aria-hidden="true"></span>
   <div class="wrap">
     <h2 class="h2 reveal" id="strategia-h">strategia <span class="script">treści i stron www</span></h2>
     <div class="split">
-      <figure class="board glass reveal">
-        <img src="assets/img/miro-kategorie.jpg" alt="Makieta w Miro: podstrona kategorii bloga z wyróżnionym wpisem, listą wpisów i wyszukiwarką w kategorii" width="1000" height="1399">
-        <figcaption>przykładowa makieta w Miro</figcaption>
-      </figure>
+      <div class="cycle reveal" role="img" aria-label="Tak pracuję nad strategią: research, wartości i persony, ścieżki lejka, treści i SEO, pomiar i poprawki. Potem wszystko zaczyna się od nowa.">
+        <span class="cycle-ring" aria-hidden="true"></span>
+        <span class="cycle-orbit" aria-hidden="true"><span class="comet"></span></span>
+        <span class="cycle-core" aria-hidden="true">Twoja<br>marka</span>
+        <span class="node n1" aria-hidden="true"><i>01</i>research</span>
+        <span class="node n2" aria-hidden="true"><i>02</i>wartości i persony</span>
+        <span class="node n3" aria-hidden="true"><i>03</i>ścieżki lejka</span>
+        <span class="node n4" aria-hidden="true"><i>04</i>treści i SEO</span>
+        <span class="node n5" aria-hidden="true"><i>05</i>pomiar i poprawki</span>
+      </div>
       <div class="reveal">
-        <p class="lead">Zaczynałam od intuicji. Potem dołożyłam do niej wiedzę z warsztatów i szkoleń. Dzięki temu wiem, do kogo mówisz, zanim napiszę pierwsze zdanie.</p>
+        <p class="lead">Zaczynałam od intuicji. Potem dołożyłam do niej wiedzę z warsztatów i szkoleń. Dzięki temu wiem, do kogo mówisz, zanim napiszę pierwsze zdanie albo stworzę pierwszy post.</p>
         <div class="builds glass">
-          <span class="rotator"><span class="rot-list"><span>filary SEO</span><span>ścieżki lejka</span><span>buyer persony</span><span>antypersony</span><span>wartości marki</span><span class="rot-dup" aria-hidden="true">filary SEO</span></span></span>
+          <span class="rotator"><span class="rot-list"><span>filary SEO</span><span>ścieżki lejka</span><span>buyer persony</span><span>antypersony</span><span>wartości marki</span><span>pillar page</span><span class="rot-dup" aria-hidden="true">filary SEO</span></span></span>
         </div>
         <div class="acc">
           <details class="glass" open><summary>fundament marki</summary><p>Wartości, persony i lejek w jednym miejscu. Każdy tekst i kampania grają wtedy do jednej bramki.</p></details>
-          <details class="glass"><summary>strony, które prowadzą</summary><p>Treść i układ, dzięki którym klient od razu wie, co dostaje i gdzie kliknąć. Makieta w Miro albo w Claude Design.</p></details>
+          <details class="glass"><summary>intuicyjne strony</summary><p>Treść i układ, dzięki którym klient od razu wie, co dostaje i gdzie kliknąć. Makieta w Miro albo w Claude Design, gotowa dla grafika.</p></details>
           <details class="glass"><summary>content hub w Claude</summary><p>Baza wiedzy o marce: persony, styl, oferta i gotowe prompty. Zespół pisze spójnie i szybciej.</p></details>
           <details class="glass"><summary>newsletter</summary><p>Od formularza zapisu po segmenty, żeby maile trafiały do ludzi, którzy chcą je czytać.</p></details>
           <details class="glass"><summary>case studies</summary><p>Historie klientów, które przekonują kolejnych: kwestionariusz, zgody, cytaty i gotowy tekst.</p></details>
@@ -595,6 +787,7 @@ a.res-title:hover{color:var(--ink)}
 
 <!-- PARTNERSTWA -->
 <section class="band cream" aria-labelledby="partnerstwa-h">
+  <div class="wave top w-olive" aria-hidden="true"><svg viewBox="0 0 2400 40" preserveAspectRatio="none"><path d="M0 0 H2400 V20.0 Q2325 7 2250 20 Q2175 33 2100 20 Q2025 7 1950 20 Q1875 33 1800 20 Q1725 7 1650 20 Q1575 33 1500 20 Q1425 7 1350 20 Q1275 33 1200 20 Q1125 7 1050 20 Q975 33 900 20 Q825 7 750 20 Q675 33 600 20 Q525 7 450 20 Q375 33 300 20 Q225 7 150 20 Q75 33 0 20 Z"></path></svg></div>
   <span class="orb a" aria-hidden="true"></span>
   <span class="orb b" aria-hidden="true"></span>
   <div class="wrap">
@@ -611,22 +804,34 @@ a.res-title:hover{color:var(--ink)}
         </ul>
       </div>
     </div>
-    <div class="cards4">
-      <div class="gcard glass reveal"><h3>e-booki i raporty</h3><p>Artykuły eksperckie do e-booka Luigi's Box o AI w e-commerce, raportu Elephate o SEO w e-commerce beauty i e-booka Marketer Plus.</p></div>
-      <div class="gcard glass reveal"><h3>targi i wydarzenia</h3><p>Na Targi Expo Łódź oferty, prezentacja i landing page w HubSpot. Na Ecommerce Event 4.0 reklama firmy.</p></div>
-      <div class="gcard glass reveal"><h3>rankingi i patronaty</h3><p>Materiały do 2 rankingów platform i narzędzi e-commerce oraz patronat medialny raportu Semcore.</p></div>
-      <div class="gcard glass reveal"><h3>Kaufland</h3><p>Opis integracji, wymiana wpisów i materiałów na social media, newsletter z ofertą. Cała komunikacja po angielsku.</p></div>
+    <div class="pmarq reveal">
+      <div class="ptrack">
+        <div class="gcard glass"><h3>e-booki i raporty</h3><p>Artykuły eksperckie do e-booka Luigi's Box o AI w e-commerce, raportu Elephate o SEO w e-commerce beauty i e-booka Marketer Plus.</p></div>
+        <div class="gcard glass"><h3>targi i wydarzenia</h3><p>Na Targi Expo Łódź oferty, prezentacja i landing page w HubSpot. Na Ecommerce Event 4.0 reklama firmy.</p></div>
+        <div class="gcard glass"><h3>rankingi i patronaty</h3><p>Materiały do 2 rankingów platform i narzędzi e-commerce oraz patronat medialny raportu Semcore.</p></div>
+        <div class="gcard glass"><h3>Kaufland</h3><p>Opis integracji, wymiana wpisów i materiałów na social media, newsletter z ofertą. Cała komunikacja po angielsku.</p></div>
+        <div class="gcard glass" aria-hidden="true"><h3>e-booki i raporty</h3><p>Artykuły eksperckie do e-booka Luigi's Box o AI w e-commerce, raportu Elephate o SEO w e-commerce beauty i e-booka Marketer Plus.</p></div>
+        <div class="gcard glass" aria-hidden="true"><h3>targi i wydarzenia</h3><p>Na Targi Expo Łódź oferty, prezentacja i landing page w HubSpot. Na Ecommerce Event 4.0 reklama firmy.</p></div>
+        <div class="gcard glass" aria-hidden="true"><h3>rankingi i patronaty</h3><p>Materiały do 2 rankingów platform i narzędzi e-commerce oraz patronat medialny raportu Semcore.</p></div>
+        <div class="gcard glass" aria-hidden="true"><h3>Kaufland</h3><p>Opis integracji, wymiana wpisów i materiałów na social media, newsletter z ofertą. Cała komunikacja po angielsku.</p></div>
+        <div class="gcard glass" aria-hidden="true"><h3>e-booki i raporty</h3><p>Artykuły eksperckie do e-booka Luigi's Box o AI w e-commerce, raportu Elephate o SEO w e-commerce beauty i e-booka Marketer Plus.</p></div>
+        <div class="gcard glass" aria-hidden="true"><h3>targi i wydarzenia</h3><p>Na Targi Expo Łódź oferty, prezentacja i landing page w HubSpot. Na Ecommerce Event 4.0 reklama firmy.</p></div>
+        <div class="gcard glass" aria-hidden="true"><h3>rankingi i patronaty</h3><p>Materiały do 2 rankingów platform i narzędzi e-commerce oraz patronat medialny raportu Semcore.</p></div>
+        <div class="gcard glass" aria-hidden="true"><h3>Kaufland</h3><p>Opis integracji, wymiana wpisów i materiałów na social media, newsletter z ofertą. Cała komunikacja po angielsku.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- SOCIAL MEDIA -->
 <section class="band olive" aria-labelledby="social-h">
+  <div class="wave top w-cream alt" aria-hidden="true"><svg viewBox="0 0 2400 40" preserveAspectRatio="none"><path d="M0 0 H2400 V20.0 Q2325 7 2250 20 Q2175 33 2100 20 Q2025 7 1950 20 Q1875 33 1800 20 Q1725 7 1650 20 Q1575 33 1500 20 Q1425 7 1350 20 Q1275 33 1200 20 Q1125 7 1050 20 Q975 33 900 20 Q825 7 750 20 Q675 33 600 20 Q525 7 450 20 Q375 33 300 20 Q225 7 150 20 Q75 33 0 20 Z"></path></svg></div>
   <span class="orb a" aria-hidden="true"></span>
   <span class="orb b" aria-hidden="true"></span>
   <div class="wrap">
     <h2 class="h2 reveal" id="social-h">social media <span class="script">i wideo</span></h2>
-    <p class="lead reveal" style="margin-top: 32px">Prowadzę swój LinkedIn i odpowiadam za LinkedIn firmy: strategię i oprawę wizualną. Robię też grafiki, rolki, krótkie filmy i relacje na żywo.</p>
+    <p class="lead reveal" style="margin-top: 32px">Prowadzę swój LinkedIn, a dla różnych firm odpowiadałam za LinkedIna, Instagrama, Facebooka i TikToka. Robię grafiki, rolki, krótkie filmy i relacje na żywo.</p>
+    <ul class="platforms reveal"><li>LinkedIn</li><li>Instagram</li><li>Facebook</li><li>TikTok</li></ul>
 
     <div class="li-head glass reveal">
       <span class="avatar"><img src="assets/img/avatar.jpg" alt="" width="200" height="200"></span>
@@ -660,19 +865,30 @@ a.res-title:hover{color:var(--ink)}
       </article>
     </div>
 
-    <div class="gallery">
-      <figure class="gal t1"><img src="assets/img/post-selly-gta.jpg" alt="Grafika do posta Selly: Bierzesz wolne na premierę GTA VI?" width="900" height="903" loading="lazy"></figure>
-      <figure class="gal t2"><img src="assets/img/post-burga.jpg" alt="Okładka mojej karuzeli: Dlaczego BURGA robi świetny marketing?" width="800" height="1000" loading="lazy"></figure>
-      <figure class="gal t3"><img src="assets/img/notatki-selly.jpg" alt="Moje zdjęcie do posta na LinkedIn z notatką: Sprawdzić, o co ludzie pytają w komentarzach na Reddicie" width="800" height="1003" loading="lazy"></figure>
-      <figure class="gal t4"><img src="assets/img/ipcc-rekrutacja.jpg" alt="Post rekrutacyjny projektu Nasza przyszłość, nasze zdrowie" width="800" height="800" loading="lazy"></figure>
-      <figure class="gal t2"><img src="assets/img/selly-homedecor.jpg" alt="Reklama Selly: nowoczesny szablon sklepu dla branży home decor" width="800" height="1000" loading="lazy"></figure>
-      <figure class="gal t1"><img src="assets/img/post-tymbark.jpg" alt="Okładka mojej karuzeli: Tymbark zamienia nas w copywriterów?" width="800" height="800" loading="lazy"></figure>
-      <figure class="gal t4"><img src="assets/img/klb-alfabet.jpg" alt="Grafika dla KLB Akademii Szkoleń: długość alfabetu w różnych krajach" width="800" height="671" loading="lazy"></figure>
-      <figure class="gal t3"><img src="assets/img/ekipa-mtcn.jpg" alt="Post Poznaj ekipę projektu z projektu Make the change NOW!" width="800" height="800" loading="lazy"></figure>
-      <figure class="gal t3"><video class="vid" src="assets/video/selly-expo.mp4" poster="assets/img/selly-expo.jpg" width="720" height="720" autoplay muted loop playsinline controls aria-label="Krótki film z wydarzeń branżowych, na których była Selly"></video></figure>
-      <figure class="gal t2"><img src="assets/img/post-sharebee.jpg" alt="Okładka mojej karuzeli: notatki z Sharebee Linking Fest" width="800" height="1000" loading="lazy"></figure>
-      <figure class="gal t1"><img src="assets/img/selly-netboard.jpg" alt="Baner Selly: Więcej niż wsparcie" width="580" height="400" loading="lazy"></figure>
-      <figure class="gal t4"><img src="assets/img/post-ndsz.jpg" alt="Post zapowiadający projekt Nie daj się zatrzymać!" width="800" height="800" loading="lazy"></figure>
+    <div class="feed">
+      <div class="feed-cards">
+        <figure class="igc t1"><figcaption class="igc-head"><img class="igc-av cover" src="assets/img/avatar.jpg" alt="" width="200" height="200"><span>julianna janusz</span></figcaption><img class="igc-img" src="assets/img/post-burga.jpg" alt="Okładka mojej karuzeli: Dlaczego BURGA robi świetny marketing?" width="800" height="1000" loading="lazy"><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+        <figure class="igc t2"><figcaption class="igc-head"><img class="igc-av contain" src="assets/logos/selly-mark.png" alt="" width="163" height="163"><span>selly</span></figcaption><img class="igc-img" src="assets/img/selly-homedecor.jpg" alt="Reklama Selly: nowoczesny szablon sklepu dla branży home decor" width="800" height="1000" loading="lazy"><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+        <figure class="igc t3"><figcaption class="igc-head"><img class="igc-av contain" src="assets/logos/ipcc-mark.png" alt="" width="120" height="120"><span>ipcc</span></figcaption><img class="igc-img" src="assets/img/ipcc-rekrutacja.jpg" alt="Post rekrutacyjny projektu Nasza przyszłość, nasze zdrowie" width="800" height="800" loading="lazy"><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+        <figure class="igc t4"><figcaption class="igc-head"><img class="igc-av cover" src="assets/img/avatar.jpg" alt="" width="200" height="200"><span>julianna janusz</span></figcaption><img class="igc-img" src="assets/img/notatki-selly.jpg" alt="Moje zdjęcie do posta na LinkedIn z notatką: Sprawdzić, o co ludzie pytają w komentarzach na Reddicie" width="800" height="1003" loading="lazy"><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+        <figure class="igc t2"><figcaption class="igc-head"><img class="igc-av cover" src="assets/img/avatar.jpg" alt="" width="200" height="200"><span>julianna janusz</span></figcaption><img class="igc-img" src="assets/img/post-tymbark.jpg" alt="Okładka mojej karuzeli: Tymbark zamienia nas w copywriterów?" width="800" height="800" loading="lazy"><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+        <figure class="igc t1"><figcaption class="igc-head"><img class="igc-av contain" src="assets/logos/klb.png" alt="" width="720" height="310"><span>klb akademia szkoleń</span></figcaption><img class="igc-img" src="assets/img/klb-alfabet.jpg" alt="Grafika dla KLB Akademii Szkoleń: długość alfabetu w różnych krajach" width="800" height="671" loading="lazy"><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+        <figure class="igc t3"><figcaption class="igc-head"><img class="igc-av contain" src="assets/logos/selly-mark.png" alt="" width="163" height="163"><span>selly</span></figcaption><video class="vid igc-img" src="assets/video/selly-expo.mp4" poster="assets/img/selly-expo.jpg" width="720" height="720" autoplay muted loop playsinline controls aria-label="Krótki film z wydarzeń branżowych, na których była Selly"></video><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+        <figure class="igc t4"><figcaption class="igc-head"><img class="igc-av contain" src="assets/logos/ikds.png" alt="" width="295" height="294"><span>make the change now</span></figcaption><img class="igc-img" src="assets/img/ekipa-mtcn.jpg" alt="Post Poznaj ekipę projektu z projektu Make the change NOW!" width="800" height="800" loading="lazy"><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+        <figure class="igc t1"><figcaption class="igc-head"><img class="igc-av cover" src="assets/img/avatar.jpg" alt="" width="200" height="200"><span>julianna janusz</span></figcaption><img class="igc-img" src="assets/img/post-sharebee.jpg" alt="Okładka mojej karuzeli: notatki z Sharebee Linking Fest" width="800" height="1000" loading="lazy"><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+        <figure class="igc t3"><figcaption class="igc-head"><img class="igc-av contain" src="assets/logos/selly-mark.png" alt="" width="163" height="163"><span>selly</span></figcaption><img class="igc-img" src="assets/img/selly-netboard.jpg" alt="Baner Selly: Więcej niż wsparcie" width="580" height="400" loading="lazy"><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+        <figure class="igc t2"><figcaption class="igc-head"><img class="igc-av contain" src="assets/logos/ipcc-mark.png" alt="" width="120" height="120"><span>nie daj się zatrzymać</span></figcaption><img class="igc-img" src="assets/img/post-ndsz.jpg" alt="Post zapowiadający projekt Nie daj się zatrzymać!" width="800" height="800" loading="lazy"><div class="igc-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div></figure>
+      </div>
+      <div class="phone-mock" aria-label="Post Selly na telefonie: 19.11 premiera GTA VI. Bierzesz wolne? Nie oceniamy" role="img">
+        <div class="pm-screen" aria-hidden="true">
+          <div class="pm-status"><span>19:11</span><span class="pm-island"></span><span class="pm-sys"><i></i><i></i><i></i><b></b></span></div>
+          <div class="pm-head"><img class="igc-av contain" src="assets/logos/selly-mark.png" alt="" width="163" height="163"><span>selly</span><span class="pm-dots">•••</span></div>
+          <img class="pm-img" src="assets/img/post-selly-gta.jpg" alt="" width="900" height="903">
+          <div class="igc-foot pm-foot" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="liked" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 1 1-3.9-7.1 8.5 8.5 0 0 1 3.9 7.1z M20.5 20.5l-2.6-2.2"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3 10 13.5 M21.5 3l-6.8 18-3.6-7.6L3.5 9.7z"></path></svg><span class="igc-sp"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17l-6-4-6 4z"></path></svg></div>
+          <p class="pm-cap"><b>selly</b> 19.11 premiera GTA VI. Bierzesz wolne? Nie oceniamy</p>
+          <div class="pm-nav"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -681,6 +897,7 @@ a.res-title:hover{color:var(--ink)}
 
 <!-- KONTAKT -->
 <section class="band deep" id="kontakt">
+  <div class="wave top w-olive" aria-hidden="true"><svg viewBox="0 0 2400 40" preserveAspectRatio="none"><path d="M0 0 H2400 V20.0 Q2325 7 2250 20 Q2175 33 2100 20 Q2025 7 1950 20 Q1875 33 1800 20 Q1725 7 1650 20 Q1575 33 1500 20 Q1425 7 1350 20 Q1275 33 1200 20 Q1125 7 1050 20 Q975 33 900 20 Q825 7 750 20 Q675 33 600 20 Q525 7 450 20 Q375 33 300 20 Q225 7 150 20 Q75 33 0 20 Z"></path></svg></div>
   <span class="orb a" aria-hidden="true"></span>
   <div class="wrap">
     <div class="contact">
@@ -689,7 +906,16 @@ a.res-title:hover{color:var(--ink)}
         <p class="lead" style="margin-top: 28px">Szukasz osoby, która ogarnie cały marketing? Od strategii, przez treści i SEO, po social media. Napisz.</p>
         <div class="contact-links">
           <a class="glass" href="mailto:januszjulianna@gmail.com"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>januszjulianna@gmail.com</a>
-          <a class="glass" href="https://www.linkedin.com/in/julianna-janusz/"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 10v7"></path><path d="M8 7v.01"></path><path d="M12 17v-4a2 2 0 0 1 4 0v4"></path><path d="M12 10v7"></path></svg>linkedin.com/in/julianna-janusz</a>
+          <div class="li-row">
+            <a class="glass" href="https://www.linkedin.com/in/julianna-janusz/"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M8 10v7"></path><path d="M8 7v.01"></path><path d="M12 17v-4a2 2 0 0 1 4 0v4"></path><path d="M12 10v7"></path></svg>linkedin.com/in/julianna-janusz</a>
+            <span class="glitter" aria-hidden="true">
+              <svg class="g-arrow" viewBox="0 0 150 70" width="150" height="70"><defs><linearGradient id="glitterGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFF4C9"></stop><stop offset=".35" stop-color="#EBA9B5"></stop><stop offset=".62" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#F2C46B"></stop></linearGradient></defs><path class="g-line" d="M142 50 C 110 66, 50 62, 14 34"></path><path class="g-trail" stroke="url(#glitterGrad)" d="M142 50 C 110 66, 50 62, 14 34"></path><path class="g-head" d="M20.5 48.6 L14 34 L29.8 36.8"></path></svg>
+              <span class="g-text">kliknij tutaj</span>
+              <svg class="spark s1" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#F2C46B"></path></svg>
+              <svg class="spark s2" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#FFFFFF"></path></svg>
+              <svg class="spark s3" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#EBA9B5"></path></svg>
+            </span>
+          </div>
         </div>
       </div>
       <div class="door reveal">
@@ -715,5 +941,17 @@ a.res-title:hover{color:var(--ink)}
 
 </div>
 <!--SITE-END-->
+<script>
+(function () {
+  var ba = document.querySelector('.ba');
+  if (!ba) return;
+  if (!('IntersectionObserver' in window)) { ba.classList.add('play'); return; }
+  new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { ba.classList.add('play'); obs.disconnect(); }
+    });
+  }, { threshold: 0.35 }).observe(ba);
+})();
+</script>
 </body>
 </html>
